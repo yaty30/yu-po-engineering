@@ -28,7 +28,7 @@ interface ContentProps {
 
 export default function Content({
   children,
-  maxWidth = "xl",
+  maxWidth,
   paddingY = 4,
   articleImage,
   articleImagePosition = "left",
@@ -50,8 +50,6 @@ export default function Content({
   if (isLarge && direction === "row") {
     containerSx.overflowX = "auto";
     containerSx.display = "flex";
-    // containerSx.flexDirection = { xs: "column", md: "row" };
-    // containerSx["&::-webkit-scrollbar"] = { display: "none" };
     containerSx.msOverflowStyle = "none";
     containerSx.scrollbarWidth = "none";
   }
@@ -59,26 +57,34 @@ export default function Content({
   return (
     <Box sx={{ width: "100%" }}>
       {divider?.enabled && (
-        <Divider
-          id={divider?.id || undefined}
-          variant="middle"
-          sx={{
-            my: 4,
-            userSelect: "none",
-            maxWidth: theme.breakpoints.values["xl"],
-            margin: "0 auto",
-          }}
-        >
-          <Typography
+        <Box sx={{ mt: 8, mb: 6 }}>
+          {" "}
+          {/* Add significant spacing around the divider */}
+          <Divider
+            id={divider?.id || undefined}
+            variant="middle"
             sx={{
-              color: divider?.color ?? "rgba(0, 0, 0, 0.5)",
-              mx: 2,
-              fontWeight: 500,
+              userSelect: "none",
+              maxWidth: "90%", //theme.breakpoints.values["xl"],
+              mx: "auto", // Use mx instead of margin to preserve vertical margins
+              "&::before, &::after": {
+                borderColor: divider?.color
+                  ? `${divider.color}40`
+                  : "rgba(0, 0, 0, 0.2)",
+              },
             }}
           >
-            {divider?.label}
-          </Typography>
-        </Divider>
+            <Typography
+              sx={{
+                color: divider?.color ?? "rgba(0, 0, 0, 0.5)",
+                mx: 2,
+                fontWeight: 500,
+              }}
+            >
+              {divider?.label}
+            </Typography>
+          </Divider>
+        </Box>
       )}
 
       <Box sx={containerSx}>{children}</Box>

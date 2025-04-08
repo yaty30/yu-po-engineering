@@ -17,16 +17,19 @@ interface BannerProps {
 
 const Banner = ({ imageSrc, content, size = "normal" }: BannerProps) => {
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const bannerSize = (size: string) => {
+    const _mbSize = (t: number | string, f: number | string) =>
+      isMobile ? t : f;
+
     switch (size) {
       case "dense":
-        return 400;
+        return _mbSize(300, 500);
       case "max":
-        return "96vh";
+        return _mbSize("90%", "96vh");
       default:
-        return 800;
+        return _mbSize(700, 850);
     }
   };
 
@@ -34,11 +37,12 @@ const Banner = ({ imageSrc, content, size = "normal" }: BannerProps) => {
     <Box
       sx={{
         position: "relative",
-        minHeight: bannerSize(size),
-        maxHeight: bannerSize(size),
-        // Height: "90vh",
+        height: bannerSize(size),
+        width: "100vw",
+        maxWidth: "100%",
         overflow: "hidden",
         userSelect: "none",
+        top: -80,
       }}
     >
       <CardMedia
@@ -47,7 +51,6 @@ const Banner = ({ imageSrc, content, size = "normal" }: BannerProps) => {
         sx={{
           height: "100%",
           width: "100%",
-          objectFit: "cover",
         }}
         image={imageSrc}
         alt="Banner background"

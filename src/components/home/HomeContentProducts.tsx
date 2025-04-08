@@ -1,7 +1,7 @@
 import { Box, CardMedia, Divider, useTheme } from "@mui/material";
-import Content from "../ui/Content";
+import Content from "../../components/ui/Content";
 import FireDoorPicture from "~/assets/products/firedoor.jpg";
-import Article from "../ui/Article";
+import Article from "../../components/ui/Article";
 
 interface ProductData {
   id: string;
@@ -65,8 +65,7 @@ export default () => {
   return (
     <Content
       direction="row"
-      maxWidth="lg"
-      paddingY={8}
+      maxWidth="xl"
       divider={{
         enabled: true,
         label: "我們的產品",

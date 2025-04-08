@@ -136,7 +136,12 @@ const MenuDrawer = () => {
 
   return (
     <>
-      <IconButton onClick={toggleDrawer(true)} edge="end" color="inherit">
+      <IconButton
+        onClick={toggleDrawer(true)}
+        edge="end"
+        color="inherit"
+        sx={{ ml: 2 }}
+      >
         <MenuIcon sx={{ color: "#fff" }} />
       </IconButton>
       <Drawer

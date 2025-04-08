@@ -1,36 +1,30 @@
-import React, { memo, useMemo, type ReactNode } from "react";
-import { Outlet } from "react-router";
+import { memo, useEffect } from "react";
 import { Provider } from "react-redux";
 import { store } from "~/stores/store";
 import { Box } from "@mui/material";
 import NavBar from "~/components/ui/NavBar";
 import Footer from "~/components/ui/Footer";
 import ContactDial from "~/components/home/ContactDial";
-import Banner from "~/components/ui/Banner";
+import { Outlet, useLocation } from "react-router-dom";
 
-interface BannerProps {
-  src: string;
-  content?: ReactNode;
-  size?: "dense" | "max" | "normal";
-}
+// ScrollToTop component that uses the useLocation hook to detect route changes
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
 
-interface LayoutProps {
-  children?: ReactNode;
-  banner?: BannerProps;
-}
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
-const Layout = ({ children, banner }: LayoutProps) => {
-  // Use useMemo for constants and calculations
-  const navbarHeight = useMemo(() => "64px", []);
+  return null;
+};
 
-  // Memoize context value to prevent unnecessary re-renders
-  const contextValue = useMemo(() => {
-    return { navbarHeight: 64 };
-  }, []);
-
+const Layout = () => {
   return (
     <Provider store={store}>
       <Box sx={{ position: "relative", minHeight: "100vh" }}>
+        {/* ScrollToTop component */}
+        <ScrollToTop />
+
         {/* Navbar fixed at the top */}
         <Box
           sx={{
@@ -44,22 +38,13 @@ const Layout = ({ children, banner }: LayoutProps) => {
           <NavBar />
         </Box>
 
-        {/* Banner with full height if present */}
-        {banner && (
-          <Banner
-            imageSrc={banner.src}
-            content={banner?.content ?? undefined}
-            size={banner?.size}
-          />
-        )}
-
         {/* Main content area */}
         <Box
           sx={{
             width: "100%",
             // Only add padding if banner is not present
-            pt: banner ? 0 : navbarHeight,
-            minHeight: banner ? "auto" : `calc(100vh - ${navbarHeight})`,
+            pt: 0,
+            minHeight: "auto",
           }}
         >
           <Box
@@ -70,7 +55,7 @@ const Layout = ({ children, banner }: LayoutProps) => {
               flexDirection: "column",
             }}
           >
-            {children}
+            <Outlet />
           </Box>
         </Box>
 

@@ -13,8 +13,8 @@ import {
   Grid,
 } from "@mui/material";
 import React, { useState, useEffect, type ReactNode } from "react";
-import Content from "../ui/Content";
-import { useBreakpoint } from "~/hooks/useBreakpoint";
+import Content from "~/components/ui/Content";
+import { useBreakpoint } from "~/components/hooks/useBreakpoint";
 
 interface TabPanelProps {
   tabIndex: number;

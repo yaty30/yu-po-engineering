@@ -17,7 +17,7 @@ const initialState: InitialState = {
     { label: "公司簡介", link: "/" },
     { label: "我們的產品", link: "/products" },
     { label: "案例分享", link: "/projects" },
-    { label: "聯絡我們", link: "/contactUs" },
+    { label: "聯絡我們", link: "/contact-us" },
   ],
 };
 

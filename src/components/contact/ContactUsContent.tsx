@@ -11,12 +11,12 @@ import {
   Stack,
 } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
-import Content from "../ui/Content";
+import Content from "../../components/ui/Content";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import Copy from "../ui/Copy";
+import Copy from "../../components/ui/Copy";
 
 const styles = {
   container: {

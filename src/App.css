@@ -1,42 +1,33 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+:root {
+  --primary: #fb8c00;
+  --primary-hover: #e65100;
+  --primary-hover-opacity-10: rgba(251, 140, 0, 0.1);
+  --primary-hover-opacity-20: rgba(251, 140, 0, 0.2);
+  --primary-hover-opacity-30: rgba(251, 140, 0, 0.3);
+  --primary-hover-opacity-40: rgba(251, 140, 0, 0.4);
+  --grey: #6f6f6f;
+  --dark-grey: #333333;
+  --body-text: #6f6f6f;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+html,
+body {
+  @apply bg-white;
+  background-color: white;
+
+  /* @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  } */
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+button,
+a {
+  outline: none !important;
 }
