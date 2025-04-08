@@ -8,7 +8,6 @@ import {
   InputLabel,
   Divider,
   useTheme,
-  useMediaQuery,
   Drawer,
   IconButton,
 } from "@mui/material";

@@ -1,5 +1,4 @@
-import React from "react";
-import { Box, List, ListItem, CardMedia, Grid } from "@mui/material";
+import { Box, CardMedia, Grid } from "@mui/material";
 import Logo1 from "~/assets/logos/logo.png";
 import Logo2 from "~/assets/logos/logo2.png";
 import Logo3 from "~/assets/logos/logo3.png";
@@ -20,7 +19,7 @@ export default () => {
         alignItems: "center",
       }}
     >
-      {logos.map((logo, index) => (
+      {logos.map((logo) => (
         <Grid size={{ xs: 4, md: 2 }} key={logo}>
           <Box
             sx={{

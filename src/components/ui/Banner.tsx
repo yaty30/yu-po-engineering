@@ -1,12 +1,5 @@
 import CardMedia from "@mui/material/CardMedia";
-import {
-  Box,
-  Button,
-  Typography,
-  Container,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { memo, type ReactNode } from "react";
 
 interface BannerProps {

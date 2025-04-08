@@ -1,16 +1,6 @@
-import {
-  Container,
-  Box,
-  Typography,
-  Button,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Container, Box, Typography } from "@mui/material";
 
 export default () => {
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-
   return (
     <Container maxWidth="xl">
       <Box

@@ -13,8 +13,6 @@ const StyledSnackbar = styled(MUISnackbar)({
     fontWeight: 600,
     color: "var(--primary-hover)",
     backdropFilter: "blur(10px)",
-    // boxShadow: "0px 0px 10px 4px rgba(210, 210, 210, 0.3)",
-    // textShadow: "0px 0px 1px rgba(0,0,0)",
   },
 });
 

@@ -4,11 +4,9 @@ import {
   ListItemButton,
   TextField,
   Container,
-  Button,
   IconButton,
   useMediaQuery,
   useTheme,
-  Divider,
   Typography,
   Stack,
   ListItem,
@@ -20,10 +18,9 @@ import {
   LinkedIn,
   Send,
   WhatsApp,
-  AccountBalance,
   CancelRounded,
 } from "@mui/icons-material";
-import React, { useState } from "react";
+import { useState } from "react";
 import CompanyLogo from "~/assets/logos/companylogo.png";
 
 const styles = {
@@ -172,7 +169,7 @@ export default () => {
           >
             <Typography sx={{ mr: 3, fontWeight: 500 }}>關注我們: </Typography>
             <Stack direction="row" spacing={3}>
-              {contacts.map((item, index) => (
+              {contacts.map((item) => (
                 <IconButton
                   key={item.name}
                   sx={{

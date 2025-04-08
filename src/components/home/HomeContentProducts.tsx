@@ -1,4 +1,4 @@
-import { Box, CardMedia, Divider, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
 import Content from "../../components/ui/Content";
 import FireDoorPicture from "~/assets/products/firedoor.jpg";
 import Article from "../../components/ui/Article";
@@ -61,7 +61,6 @@ const productData: ProductData[] = [
 ];
 
 export default () => {
-  const theme = useTheme();
   return (
     <Content
       direction="row"

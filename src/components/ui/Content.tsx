@@ -20,8 +20,6 @@ interface ContentProps {
   maxWidth?: "xs" | "sm" | "md" | "lg" | "xl" | false;
   paddingY?: number;
   paddingX?: number;
-  articleImage?: string;
-  articleImagePosition?: "left" | "right";
   divider?: DividerProps;
   direction?: "column" | "row";
 }
@@ -30,8 +28,6 @@ export default function Content({
   children,
   maxWidth,
   paddingY = 4,
-  articleImage,
-  articleImagePosition = "left",
   divider,
   direction = "column",
 }: ContentProps) {

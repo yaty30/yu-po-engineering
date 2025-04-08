@@ -3,16 +3,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-interface OptionsProps {
-  label: String;
-  value: Number;
-}
-interface BasicMenuProps {
-  label: String;
-  options: OptionsProps;
-}
-
-export default function BasicMenu({ label, options }: BasicMenuProps) {
+export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {

@@ -1,5 +1,4 @@
-import { Box, Button, Typography, CardMedia } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import { Box } from "@mui/material";
 import Content from "../../components/ui/Content";
 import ProfilePicture from "~/assets/worker.jpg";
 import Article from "../../components/ui/Article";

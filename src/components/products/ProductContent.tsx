@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Typography,
   CardMedia,
   Tab,
@@ -12,7 +11,7 @@ import {
   CardActionArea,
   Grid,
 } from "@mui/material";
-import React, { useState, useEffect, type ReactNode } from "react";
+import React, { useState, type ReactNode } from "react";
 import Content from "~/components/ui/Content";
 import { useBreakpoint } from "~/components/hooks/useBreakpoint";
 
@@ -80,7 +79,7 @@ export default () => {
   const contentRef = React.useRef<HTMLDivElement>(null);
   const titleLevelRef = React.useRef<HTMLDivElement>(null);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
 
     // Scroll to the title level position when tab changes
