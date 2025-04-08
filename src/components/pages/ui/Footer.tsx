@@ -1,0 +1,264 @@
+import {
+  Box,
+  List,
+  ListItemButton,
+  TextField,
+  Container,
+  Button,
+  IconButton,
+  useMediaQuery,
+  useTheme,
+  Divider,
+  Typography,
+  Stack,
+  ListItem,
+  Grid,
+} from "@mui/material";
+import {
+  Email,
+  Facebook,
+  LinkedIn,
+  Send,
+  WhatsApp,
+  AccountBalance,
+  CancelRounded,
+} from "@mui/icons-material";
+import React, { useState } from "react";
+import CompanyLogo from "~/assets/logos/companylogo.png";
+
+const styles = {
+  container: {
+    minHeight: 140,
+    bgcolor: "rgba(44, 54, 74, 0.95)",
+    pt: 6,
+    pb: 2,
+  },
+  content: {
+    display: "flex",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    gap: 2,
+  },
+  column: {
+    flex: { xs: "1 1 100%", sm: "1 1 45%" },
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    columnGap: 2,
+  },
+  divider: {
+    my: 3,
+  },
+  email: {
+    bgcolor: "rgba(28, 36, 52, 0.95)",
+    borderRadius: 10,
+    pl: 3,
+    pr: 2,
+    py: 1,
+    border: "1px solid transparent",
+    transition: "all .3s ease-in-out",
+
+    // Better selector targeting
+    "& .MuiInputBase-root": {
+      color: "white",
+    },
+    "& .MuiInputBase-input::placeholder": {
+      color: "rgba(255, 255, 255, 0.7)",
+      opacity: 1,
+    },
+
+    // Ensure underline is removed
+    "& .MuiInput-underline:before": {
+      borderBottom: "none",
+    },
+    "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
+      borderBottom: "none",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottom: "none",
+    },
+    "&:focus": {
+      borderColor: "#fff",
+    },
+  },
+};
+
+const icons = {
+  sendEmail: {
+    color: "rgba(255, 255, 255, 0.8)",
+  },
+  clearEmail: {
+    color: "rgba(255, 255, 255, 0.2)",
+  },
+};
+
+const contacts = [
+  {
+    name: "whatsapp",
+    icon: <WhatsApp />,
+  },
+  {
+    name: "email",
+    icon: <Email />,
+  },
+  {
+    name: "facebook",
+    icon: <Facebook />,
+  },
+  {
+    name: "linkedin",
+    icon: <LinkedIn />,
+  },
+];
+
+export default () => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const [email, setEmail] = useState("");
+  const [focused, setFocused] = useState(false);
+
+  return (
+    <Box sx={styles.container}>
+      <Container maxWidth="lg">
+        <Box sx={styles.content}>
+          <Box sx={styles.column}>
+            <TextField
+              type="email"
+              variant="standard"
+              placeholder="歡迎電郵查詢"
+              fullWidth
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
+              sx={{
+                ...styles.email,
+                borderColor:
+                  focused || email ? "rgba(255, 255, 255, 0.6)" : "transparent",
+                width: isSmallScreen ? "100%" : "80%",
+              }}
+              slotProps={{
+                input: {
+                  disableUnderline: true,
+                  endAdornment: (
+                    <>
+                      <IconButton
+                        disabled={!email}
+                        onClick={() => setEmail("")}
+                      >
+                        <CancelRounded
+                          sx={{
+                            color: `rgba(255, 255, 255, ${email ? 0.2 : 0})`,
+                            transition: "all .1s ease-in-out",
+                          }}
+                        />
+                      </IconButton>
+                      <IconButton disabled={!email}>
+                        <Send sx={email ? icons.sendEmail : {}} />
+                      </IconButton>
+                    </>
+                  ),
+                },
+              }}
+            />
+          </Box>
+          <Box
+            sx={{
+              ...styles.column,
+              justifyContent: isSmallScreen ? "center" : "flex-end",
+              color: "#fff",
+            }}
+          >
+            <Typography sx={{ mr: 3, fontWeight: 500 }}>關注我們: </Typography>
+            <Stack direction="row" spacing={3}>
+              {contacts.map((item, index) => (
+                <IconButton
+                  key={item.name}
+                  sx={{
+                    color: "#fff",
+                    transition: "all .3s ease-in-out",
+                    "&:hover": {
+                      color: "#fb8c00",
+                    },
+                  }}
+                >
+                  {item.icon}
+                </IconButton>
+              ))}
+            </Stack>
+          </Box>
+        </Box>
+
+        <Grid
+          container
+          spacing={2}
+          sx={{
+            ...styles.content,
+            display: "flex",
+            color: "#fff",
+            mt: 4,
+          }}
+        >
+          {!isSmallScreen && (
+            <Grid
+              size={4}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                userSelect: "none",
+              }}
+            >
+              {/* <AccountBalance sx={{ fontSize: "4rem" }} /> */}
+              <img
+                src={CompanyLogo}
+                style={{
+                  filter: "grayscale(1) brightness(10)",
+                  transform: "scale(1.2)",
+                  pointerEvents: "none",
+                }}
+              />
+            </Grid>
+          )}
+          <Grid size={{ xs: 12, sm: 12, md: 3 }} sx={{ display: "flex" }}>
+            <List>
+              <ListItem sx={{ fontWeight: "bold" }}>Contact</ListItem>
+              <ListItem>Address 1</ListItem>
+              <ListItem>Address 2</ListItem>
+              <ListItem>Address 3</ListItem>
+              <ListItem>Address 3</ListItem>
+            </List>
+          </Grid>
+          <Grid size={{ xs: 6, sm: 6, md: 2 }} sx={{ display: "flex" }}>
+            <List>
+              <ListItem sx={{ fontWeight: "bold" }}>更多資訊</ListItem>
+              <ListItemButton>公司活動</ListItemButton>
+              <ListItemButton>參與計劃</ListItemButton>
+              <ListItemButton>公司產品</ListItemButton>
+              <ListItemButton>合作伙伴</ListItemButton>
+            </List>
+          </Grid>
+          <Grid size={{ xs: 6, sm: 6, md: 2 }} sx={{ display: "flex" }}>
+            <List>
+              <ListItem sx={{ fontWeight: "bold" }}>更多資訊</ListItem>
+              <ListItemButton>公司活動</ListItemButton>
+              <ListItemButton>參與計劃</ListItemButton>
+              <ListItemButton>公司產品</ListItemButton>
+              <ListItemButton>合作伙伴</ListItemButton>
+            </List>
+          </Grid>
+        </Grid>
+
+        <Box sx={styles.content}>
+          <Box sx={{ ...styles.column, justifyContent: "center" }}>
+            <Typography
+              sx={{ color: "rgba(255, 255, 255, 0.4)", mt: 4, fontSize: 12 }}
+            >
+              Copyright © 2025 譽寶專業公程有限公司
+            </Typography>
+          </Box>
+        </Box>
+      </Container>
+    </Box>
+  );
+};
