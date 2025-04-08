@@ -12,6 +12,10 @@
   --primary-hover-opacity-20: rgba(251, 140, 0, 0.2);
   --primary-hover-opacity-30: rgba(251, 140, 0, 0.3);
   --primary-hover-opacity-40: rgba(251, 140, 0, 0.4);
+  --primary-hover-opacity-50: rgba(251, 140, 0, 0.5);
+  --primary-hover-opacity-60: rgba(251, 140, 0, 0.6);
+  --primary-hover-opacity-70: rgba(251, 140, 0, 0.7);
+  --primary-hover-opacity-80: rgba(251, 140, 0, 0.8);
   --grey: #6f6f6f;
   --dark-grey: #333333;
   --body-text: #6f6f6f;
