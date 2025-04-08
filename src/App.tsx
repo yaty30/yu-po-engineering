@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
-import ContactUs from "./components/routes/ContactUs";
-import Products from "./components/routes/Products";
-import Projects from "./components/routes/Projects";
-import MainLayout from "./components/layout/MainLayout";
-import Home from "./components/routes/Home";
+import ContactUs from "~/components/routes/ContactUs";
+import Products from "~/components/routes/Products";
+import Projects from "~/components/routes/Projects";
+import MainLayout from "~/components/layout/MainLayout";
+import Home from "~/components/routes/Home";
 
 function App() {
   return (
