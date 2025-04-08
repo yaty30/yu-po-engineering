@@ -9,7 +9,7 @@ import Home from "~/components/routes/Home";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/yu-po-engineering">
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
