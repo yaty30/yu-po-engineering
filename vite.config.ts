@@ -8,6 +8,7 @@ export default defineConfig(({ mode }) => {
   const base = env.APP_BASE_ROUTE
     ? `${env.APP_BASE_ROUTE}/`
     : env.APP_BASE_ROUTE;
+  console.log(base ? "" : "");
 
   return {
     plugins: [react()],
