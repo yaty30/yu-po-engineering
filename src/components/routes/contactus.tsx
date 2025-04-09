@@ -4,11 +4,15 @@ import ContactUsBanner from "../contact/ContactUsBanner";
 import ContactUsContent from "../contact/ContactUsContent";
 import Banner from "../ui/Banner";
 
+const breadcrumbs = [{ label: "聯絡我們", link: "" }];
+
 const ContactUs = () => {
   return (
     <Content>
       <Banner imageSrc={BG} content={<ContactUsBanner />} size="dense" />
-      <ContactUsContent />
+      <Content breadcrumbs={breadcrumbs} maxWidth="md">
+        <ContactUsContent />
+      </Content>
     </Content>
   );
 };

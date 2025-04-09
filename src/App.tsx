@@ -6,6 +6,7 @@ import Products from "~/components/routes/Products";
 import Projects from "~/components/routes/Projects";
 import MainLayout from "~/components/layout/MainLayout";
 import Home from "~/components/routes/Home";
+import ProductIntro from "./components/routes/IndividualProduct";
 
 function App() {
   const basename = import.meta.env.BASE_URL;
@@ -26,6 +27,7 @@ function App() {
             path="*"
             element={<div> Not Found or You do not have permission.</div>}
           />
+          <Route path="/products/:id/:name" element={<ProductIntro />} />
         </Route>
       </Routes>
     </BrowserRouter>

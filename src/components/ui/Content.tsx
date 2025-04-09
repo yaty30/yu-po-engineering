@@ -1,7 +1,9 @@
 import React from "react";
 import {
   Box,
+  Breadcrumbs,
   Divider,
+  Link,
   Typography,
   useMediaQuery,
   useTheme,
@@ -15,6 +17,11 @@ interface DividerProps {
   color?: string;
 }
 
+interface BreadcrumbsProps {
+  label: string;
+  link: string;
+}
+
 interface ContentProps {
   children?: React.ReactNode;
   maxWidth?: "xs" | "sm" | "md" | "lg" | "xl" | false;
@@ -22,6 +29,7 @@ interface ContentProps {
   paddingX?: number;
   divider?: DividerProps;
   direction?: "column" | "row";
+  breadcrumbs?: Array<BreadcrumbsProps>;
 }
 
 export default function Content({
@@ -30,6 +38,7 @@ export default function Content({
   paddingY = 1,
   divider,
   direction = "column",
+  breadcrumbs,
 }: ContentProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -83,7 +92,37 @@ export default function Content({
         </Box>
       )}
 
-      <Box sx={containerSx}>{children}</Box>
+      <Box sx={containerSx}>
+        {breadcrumbs && (
+          <Box sx={{ mb: 3, ml: 2, userSelect: "none" }}>
+            <Breadcrumbs aria-label="breadcrumb">
+              <Link underline="hover" color="inherit" href="/">
+                首頁
+              </Link>
+              {breadcrumbs.map((breadcrum, index) =>
+                index === breadcrumbs.length - 1 ? (
+                  <Typography
+                    sx={{ color: "text.primary" }}
+                    key={breadcrum.label}
+                  >
+                    {breadcrum.label}
+                  </Typography>
+                ) : (
+                  <Link
+                    underline="hover"
+                    color="inherit"
+                    href={breadcrum.link}
+                    key={breadcrum.label}
+                  >
+                    {breadcrum.label}
+                  </Link>
+                )
+              )}
+            </Breadcrumbs>
+          </Box>
+        )}
+        {children}
+      </Box>
     </Box>
   );
 }

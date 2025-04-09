@@ -5,10 +5,18 @@ import { memo, type ReactNode } from "react";
 interface BannerProps {
   imageSrc: string;
   content?: ReactNode;
-  size?: "dense" | "max" | "normal";
+  size?: "dense" | "normal" | "max";
+  opacity?: number;
+  sx?: Object;
 }
 
-const Banner = ({ imageSrc, content, size = "normal" }: BannerProps) => {
+const Banner = ({
+  imageSrc,
+  content,
+  size = "normal",
+  opacity = 1,
+  sx = {},
+}: BannerProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -20,7 +28,7 @@ const Banner = ({ imageSrc, content, size = "normal" }: BannerProps) => {
       case "dense":
         return _mbSize(300, 500);
       case "max":
-        return _mbSize("90%", "96vh");
+        return _mbSize("100vh", "100vh");
       default:
         return _mbSize(700, 850);
     }
@@ -44,6 +52,8 @@ const Banner = ({ imageSrc, content, size = "normal" }: BannerProps) => {
         sx={{
           height: "100%",
           width: "100%",
+          opacity: opacity,
+          ...sx,
         }}
         image={imageSrc}
         alt="Banner background"
@@ -64,7 +74,7 @@ const Banner = ({ imageSrc, content, size = "normal" }: BannerProps) => {
           paddingTop: "64px", // Add this to account for navbar height
         }}
       >
-        {content && content}
+        <Box sx={{ position: "relative", top: 20 }}>{content && content}</Box>
       </Box>
     </Box>
   );

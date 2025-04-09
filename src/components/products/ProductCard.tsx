@@ -8,6 +8,9 @@ import {
 } from "@mui/material";
 import QuizOutlinedIcon from "@mui/icons-material/QuizOutlined";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setCurrentProduct } from "~/stores/productStores";
 
 interface ProductProps {
   id: string;
@@ -78,6 +81,8 @@ const styles = {
   },
   title: {
     WebkitLineClamp: 1,
+    color: "var(--dark-grey)",
+    fontWeight: "bold",
   },
   subheading: {
     WebkitLineClamp: 1,
@@ -90,11 +95,22 @@ const styles = {
 };
 
 export default function ProductCard({ product }: { product: ProductProps }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [imageError, setImageError] = useState(false);
 
   return (
     <Card sx={styles.card}>
-      <CardActionArea href={product.link} sx={styles.cardAction}>
+      <CardActionArea
+        sx={{
+          ...styles.cardAction,
+        }}
+        onClick={(event: React.SyntheticEvent) => {
+          event.preventDefault();
+          dispatch(setCurrentProduct(product.id))
+          navigate(`/products/${product.id}/${product.title}`);
+        }}
+      >
         {/* Image container with fixed aspect ratio */}
         <Box sx={styles.imageContainer}>
           {imageError ? (

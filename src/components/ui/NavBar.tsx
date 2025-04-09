@@ -107,6 +107,7 @@ const NavBar = () => {
                 <Button
                   key={index}
                   sx={{
+                    cursor: "pointer",
                     color: active ? "var(--primary)" : "#fff", // Change text color when active
                     mx: { md: 0.5, lg: 1 },
                     px: { md: 1, lg: 2 },

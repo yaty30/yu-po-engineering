@@ -32,6 +32,7 @@ import { useNavigate } from "react-router-dom";
 const styles = {
   container: {
     minHeight: 140,
+    width: "100vw",
     bgcolor: "rgba(44, 54, 74, 0.95)",
     pt: 6,
     pb: 2,
@@ -155,7 +156,7 @@ export default () => {
 
   return (
     <Box sx={styles.container}>
-      <Container maxWidth="lg">
+      <Container>
         <Box sx={styles.content}>
           <Box sx={styles.column}>
             <TextField
