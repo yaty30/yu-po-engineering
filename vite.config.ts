@@ -5,7 +5,9 @@ import { loadEnv } from "vite";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
-  const base = env.APP_BASE_ROUTE;
+  const base = env.APP_BASE_ROUTE
+    ? `${env.APP_BASE_ROUTE}/`
+    : env.APP_BASE_ROUTE;
 
   return {
     plugins: [react()],
