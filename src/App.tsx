@@ -12,10 +12,18 @@ function App() {
     <BrowserRouter basename="/yu-po-engineering">
       <Routes>
         <Route element={<MainLayout />}>
-          <Route path="/" element={<Home />} />
+          <Route
+            index
+            // path="/"
+            element={<Home />}
+          />
           <Route path="/products" element={<Products />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route
+            path="*"
+            element={<div> Not Found or You do not have permission.</div>}
+          />
         </Route>
       </Routes>
     </BrowserRouter>
