@@ -4,7 +4,7 @@ import { store } from "~/stores/store";
 import { Box } from "@mui/material";
 import NavBar from "~/components/ui/NavBar";
 import Footer from "~/components/ui/Footer";
-import ContactDial from "~/components/home/ContactDial";
+import ContactDial from "~/components/ui/ContactDial";
 import { Outlet, useLocation } from "react-router-dom";
 
 // ScrollToTop component that uses the useLocation hook to detect route changes

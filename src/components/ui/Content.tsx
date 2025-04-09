@@ -27,7 +27,7 @@ interface ContentProps {
 export default function Content({
   children,
   maxWidth,
-  paddingY = 4,
+  paddingY = 1,
   divider,
   direction = "column",
 }: ContentProps) {

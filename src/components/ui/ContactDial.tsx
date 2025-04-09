@@ -2,16 +2,28 @@ import Box from "@mui/material/Box";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
-import SaveIcon from "@mui/icons-material/Save";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import PrintIcon from "@mui/icons-material/Print";
-import ShareIcon from "@mui/icons-material/Share";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import FacebookIcon from "@mui/icons-material/FacebookRounded";
+import { InstagramGradientIcon } from "./icons/Icons";
 
 const actions = [
-  { icon: <SaveIcon />, name: "Save" },
-  { icon: <PrintIcon />, name: "Print" },
-  { icon: <ShareIcon />, name: "Share" },
-  { icon: <WhatsAppIcon />, name: "Whatsapp" },
+  {
+    icon: <FacebookIcon sx={{ color: "var(--facebook-blue)" }} />,
+    name: "Facebook",
+  },
+  {
+    icon: <InstagramGradientIcon />,
+    name: "Instagram",
+  },
+  {
+    icon: <EmailOutlinedIcon sx={{ color: "var(--outlook-blue)" }} />,
+    name: "電郵",
+  },
+  {
+    icon: <WhatsAppIcon sx={{ color: "var(--whatsapp-green)" }} />,
+    name: "Whatsapp",
+  },
 ];
 
 export default function ContactDial() {
@@ -29,11 +41,7 @@ export default function ContactDial() {
             "&:hover": { bgcolor: "var(--primary-hover)" },
           },
         }}
-        icon={
-          <SpeedDialIcon
-            sx={{ color: "#fff", position: "relative", bottom: 1 }}
-          />
-        }
+        icon={<SpeedDialIcon sx={{ position: "relative", bottom: 1 }} />}
       >
         {actions.map((action) => (
           <SpeedDialAction

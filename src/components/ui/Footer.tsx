@@ -20,8 +20,14 @@ import {
   WhatsApp,
   CancelRounded,
 } from "@mui/icons-material";
-import { useState } from "react";
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { ReactNode, useState } from "react";
 import CompanyLogo from "~/assets/logos/companylogo.png";
+import { RootState } from "~/stores/store";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const styles = {
   container: {
@@ -108,9 +114,41 @@ const contacts = [
   },
 ];
 
+interface ListItemHeadProps {
+  icon?: ReactNode;
+  title: string;
+}
+
+const ListItemHead = ({ icon, title }: ListItemHeadProps) => {
+  return (
+    <ListItem sx={{ fontWeight: "bold" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-start",
+          alignItems: "center",
+          gap: 1,
+          color: "#fff",
+          userSelect: "none",
+          fontWeight: "bold",
+        }}
+      >
+        {icon}
+        {title}
+      </Box>
+    </ListItem>
+  );
+};
+
+// Create a memoized selector to prevent unnecessary re-renders
+const selectMenuOptions = (state: RootState) => state.generalStores.menuOptions;
+
 export default () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const navigate = useNavigate();
+
+  const menuOptions = useSelector(selectMenuOptions);
 
   const [email, setEmail] = useState("");
   const [focused, setFocused] = useState(false);
@@ -217,31 +255,48 @@ export default () => {
               />
             </Grid>
           )}
-          <Grid size={{ xs: 12, sm: 12, md: 3 }} sx={{ display: "flex" }}>
+          <Grid size={{ xs: 6, sm: 6, md: 2 }} sx={{ display: "flex" }}>
             <List>
-              <ListItem sx={{ fontWeight: "bold" }}>Contact</ListItem>
-              <ListItem>Address 1</ListItem>
-              <ListItem>Address 2</ListItem>
-              <ListItem>Address 3</ListItem>
-              <ListItem>Address 3</ListItem>
+              <ListItemHead title="地址" icon={<LocationOnIcon />} />
+              <ListItem>香港九龍觀塘道123號</ListItem>
+              <ListItem>創業中心大廈</ListItem>
+              <ListItem>15樓 1501-1502室</ListItem>
             </List>
           </Grid>
           <Grid size={{ xs: 6, sm: 6, md: 2 }} sx={{ display: "flex" }}>
             <List>
-              <ListItem sx={{ fontWeight: "bold" }}>更多資訊</ListItem>
-              <ListItemButton>公司活動</ListItemButton>
-              <ListItemButton>參與計劃</ListItemButton>
-              <ListItemButton>公司產品</ListItemButton>
-              <ListItemButton>合作伙伴</ListItemButton>
+              <ListItemHead title="電子郵件" icon={<AlternateEmailIcon />} />
+              <ListItemButton
+                onClick={() =>
+                  (window.location.href = "mailto:example@example.com")
+                }
+              >
+                mail@example.com
+              </ListItemButton>
+              <ListItemButton
+                onClick={() =>
+                  (window.location.href = "mailto:example@example.com")
+                }
+              >
+                info@example.com
+              </ListItemButton>
+              <ListItemButton
+                onClick={() =>
+                  (window.location.href = "mailto:example@example.com")
+                }
+              >
+                support@example.com
+              </ListItemButton>
             </List>
           </Grid>
           <Grid size={{ xs: 6, sm: 6, md: 2 }} sx={{ display: "flex" }}>
             <List>
-              <ListItem sx={{ fontWeight: "bold" }}>更多資訊</ListItem>
-              <ListItemButton>公司活動</ListItemButton>
-              <ListItemButton>參與計劃</ListItemButton>
-              <ListItemButton>公司產品</ListItemButton>
-              <ListItemButton>合作伙伴</ListItemButton>
+              <ListItemHead title="更多資訊" icon={<InfoRoundedIcon />} />
+              {menuOptions.map((item, index) => (
+                <ListItemButton key={index} onClick={() => navigate(item.link)}>
+                  {item.label}
+                </ListItemButton>
+              ))}
             </List>
           </Grid>
         </Grid>

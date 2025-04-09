@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import generalReducer from "./generalStores";
-// other imports...
+import productReducer from "./productStores";
 
 export const store = configureStore({
   reducer: {
     generalStores: generalReducer,
+    productStores: productReducer,
   },
 });
 

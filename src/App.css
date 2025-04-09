@@ -19,6 +19,30 @@
   --grey: #6f6f6f;
   --dark-grey: #333333;
   --body-text: #6f6f6f;
+
+  --whatsapp-green: #25d366;
+  --outlook-blue: #0078d4;
+  --facebook-blue: #1877f2;
+}
+
+.instagram-text-gradient {
+  background: linear-gradient(
+    45deg,
+    #ffdc80 0%,
+    #fcaf45 10%,
+    #f77737 20%,
+    #f56040 30%,
+    #fd1d1d 40%,
+    #e1306c 50%,
+    #c13584 60%,
+    #833ab4 70%,
+    #5851db 80%,
+    #405de6 90%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-none;
 }
 
 html,

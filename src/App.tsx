@@ -8,8 +8,10 @@ import MainLayout from "~/components/layout/MainLayout";
 import Home from "~/components/routes/Home";
 
 function App() {
+  const basename = import.meta.env.BASE_URL;
+
   return (
-    <BrowserRouter basename="/yu-po-engineering">
+    <BrowserRouter basename={basename}>
       <Routes>
         <Route element={<MainLayout />}>
           <Route
