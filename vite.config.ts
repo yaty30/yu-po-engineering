@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
-    base: base,
+    base: "/yu-po-engineering/",
     resolve: {
       alias: {
         "~": path.resolve(__dirname, "./src"),
