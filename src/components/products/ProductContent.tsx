@@ -1,12 +1,4 @@
-import {
-  Box,
-  Typography,
-  Tab,
-  Tabs,
-  useTheme,
-  useMediaQuery,
-  Grid,
-} from "@mui/material";
+import { Box, Typography, Tab, Tabs, Grid } from "@mui/material";
 import React, { useState, useEffect, type ReactNode, useRef } from "react";
 import { useBreakpoint } from "~/components/hooks/useBreakpoint";
 import ProductCard from "./ProductCard";

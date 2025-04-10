@@ -6,7 +6,6 @@ import {
   Divider,
   Link,
   Typography,
-  useMediaQuery,
   useTheme,
 } from "@mui/material";
 import type { SxProps, Theme } from "@mui/material";
