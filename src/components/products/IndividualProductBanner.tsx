@@ -1,8 +1,10 @@
 import { Container, Box, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
+import { useBreakpoint } from "../hooks/useBreakpoint";
 
 export default () => {
   const { name } = useParams();
+  const { isMobile } = useBreakpoint();
 
   return (
     <Container maxWidth="xl">
@@ -28,7 +30,7 @@ export default () => {
           sx={{
             color: "#fff",
             fontWeight: "bold",
-            fontSize: "2.67rem",
+            fontSize: isMobile ? "2rem" : "2.67rem",
             textShadow: `
             -1px -1px 0 rgba(0, 0, 0, 0.25),
             1px -1px 0 rgba(0, 0, 0, 0.25),

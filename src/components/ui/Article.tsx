@@ -1,14 +1,7 @@
 import React from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  useTheme,
-  useMediaQuery,
-  CardMedia,
-  Grid,
-} from "@mui/material";
+import { Box, Typography, Button, CardMedia, Grid } from "@mui/material";
 import type { SxProps, Theme } from "@mui/material";
+import { useBreakpoint } from "../hooks/useBreakpoint";
 
 interface ActionButtonProps {
   label: string;
@@ -40,8 +33,7 @@ const Article: React.FC<ArticleProps> = ({
     maxWidth: { xs: "100%", md: "800px" },
     width: "100%",
   };
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const { isMobile } = useBreakpoint();
 
   return (
     <Grid

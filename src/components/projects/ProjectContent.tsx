@@ -4,7 +4,6 @@ import {
   Box,
   Typography,
   useTheme,
-  useMediaQuery,
   Grid,
   IconButton,
 } from "@mui/material";
@@ -13,12 +12,13 @@ import ProjectsFilter from "./ProjectsFilter";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { RootState } from "~/stores/store";
 import { useSelector } from "react-redux";
+import { useBreakpoint } from "../hooks/useBreakpoint";
 
 const projectStates = (state: RootState) => state.projectStores.projects;
 
 export default () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const { isMobile } = useBreakpoint();
   const projects = useSelector(projectStates);
 
   const [locationFilter, setLocationFilter] = useState("all");

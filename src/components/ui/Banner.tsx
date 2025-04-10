@@ -1,6 +1,7 @@
 import CardMedia from "@mui/material/CardMedia";
-import { Box, useMediaQuery, useTheme } from "@mui/material";
+import Box from "@mui/material/Box";
 import { memo, type ReactNode } from "react";
+import { useBreakpoint } from "../hooks/useBreakpoint";
 
 interface BannerProps {
   imageSrc: string;
@@ -17,8 +18,7 @@ const Banner = ({
   opacity = 1,
   sx = {},
 }: BannerProps) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const { isMobile } = useBreakpoint();
 
   const bannerSize = (size: string) => {
     const _mbSize = (t: number | string, f: number | string) =>
@@ -43,7 +43,7 @@ const Banner = ({
         maxWidth: "100%",
         overflow: "hidden",
         userSelect: "none",
-        top: -20
+        top: -20,
       }}
     >
       <CardMedia

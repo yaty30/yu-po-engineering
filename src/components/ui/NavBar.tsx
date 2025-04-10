@@ -2,13 +2,14 @@ import { useState, useEffect, useCallback, memo } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
-import { Box, Container, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import Logo from "./Logo";
 import { useSelector } from "react-redux";
 import type { RootState } from "~/stores/store";
 import NavSearch from "./NavSearch";
 import { useNavigate, useLocation } from "react-router";
 import MenuDrawer from "./MenuDrawer";
+import { useBreakpoint } from "../hooks/useBreakpoint";
 
 // Create a memoized selector to prevent unnecessary re-renders
 const selectMenuOptions = (state: RootState) => state.generalStores.menuOptions;
@@ -20,8 +21,7 @@ const NavBar = () => {
   const navigate = useNavigate();
   const location = useLocation(); // Get current location
   const [scrolled, setScrolled] = useState(false);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const { isMobile } = useBreakpoint();
 
   // Optimize navigation with useCallback
   const handleNavigate = useCallback(

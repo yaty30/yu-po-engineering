@@ -3,9 +3,10 @@ import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import { Box, Chip, IconButton, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Chip, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ProductProps } from "~/stores/productStores";
+import { useBreakpoint } from "../hooks/useBreakpoint";
 
 const getContent = (content: string): string => {
   return content && content.length > 50
@@ -16,8 +17,7 @@ const getContent = (content: string): string => {
 // Using memo to prevent unnecessary re-renders
 const MiniProductCard = memo(function MiniProductCard(props: ProductProps) {
   const navigate = useNavigate();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const { isMobile } = useBreakpoint();
   const [slideIn, setSlideIn] = useState<boolean>(false);
 
   // Using useCallback to memoize these functions

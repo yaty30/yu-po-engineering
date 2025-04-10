@@ -6,8 +6,6 @@ import {
   Button,
   Snackbar,
   Alert,
-  useMediaQuery,
-  useTheme,
   Stack,
 } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
@@ -16,6 +14,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Copy from "../../components/ui/Copy";
+import { useBreakpoint } from "../hooks/useBreakpoint";
 
 const styles = {
   container: {
@@ -53,8 +52,7 @@ const styles = {
 };
 
 export default () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const { isMobile } = useBreakpoint();
   const [formData, setFormData] = useState({
     name: "",
     email: "",

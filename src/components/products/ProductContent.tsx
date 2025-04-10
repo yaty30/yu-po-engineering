@@ -36,9 +36,7 @@ const filteredProductStores = (state: RootState) =>
   state.productStores.filteredProducts;
 
 const ProductsPage = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const { currentBreakpoint } = useBreakpoint();
+  const { currentBreakpoint, isMobile } = useBreakpoint();
   const [value, setValue] = useState(0);
 
   const dispatch = useDispatch();

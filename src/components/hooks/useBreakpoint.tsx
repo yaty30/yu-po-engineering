@@ -14,5 +14,8 @@ export function useBreakpoint() {
   const currentBreakpoint =
     Object.entries(breakpoints).find(([_, value]) => value)?.[0] || "xs";
 
-  return { breakpoints, currentBreakpoint };
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isLarge = useMediaQuery(theme.breakpoints.up("md"));
+
+  return { breakpoints, currentBreakpoint, isMobile, isLarge };
 }

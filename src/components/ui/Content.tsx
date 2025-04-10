@@ -10,6 +10,7 @@ import {
   useTheme,
 } from "@mui/material";
 import type { SxProps, Theme } from "@mui/material";
+import { useBreakpoint } from "../hooks/useBreakpoint";
 
 interface DividerProps {
   enabled?: boolean;
@@ -42,8 +43,7 @@ export default function Content({
   breadcrumbs,
 }: ContentProps) {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const isLarge = useMediaQuery(theme.breakpoints.up("md"));
+  const { isMobile, isLarge } = useBreakpoint();
 
   // Determine container styles based on direction prop
   const containerSx: SxProps<Theme> = {

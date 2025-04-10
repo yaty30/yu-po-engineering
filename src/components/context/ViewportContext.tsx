@@ -24,7 +24,7 @@ export const ViewportProvider: React.FC<{ children: React.ReactNode }> = ({
   const theme = useTheme();
 
   // Use media queries once at the top level
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));

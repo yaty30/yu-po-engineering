@@ -4,7 +4,8 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-import { Button, useMediaQuery, useTheme } from "@mui/material";
+import { Button } from "@mui/material";
+import { useBreakpoint } from "../hooks/useBreakpoint";
 
 interface Props {
   date: string;
@@ -15,8 +16,7 @@ interface Props {
 }
 
 export default ({ date, subject, location, image, key = 0 }: Props) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const { isMobile } = useBreakpoint();
 
   return (
     <Card

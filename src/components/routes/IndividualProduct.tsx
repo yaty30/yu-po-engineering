@@ -4,6 +4,7 @@ import Content from "../ui/Content";
 import IndividualProductBanner from "../products/IndividualProductBanner";
 import IndividualProductContent from "../products/IndividualProductContent";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 const ProductIntro = () => {
   const { id, name } = useParams();
@@ -12,6 +13,13 @@ const ProductIntro = () => {
     { label: "所有產品", link: "/products" },
     { label: name ?? "", link: "" },
   ];
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
 
   return (
     <>
