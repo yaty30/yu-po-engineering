@@ -46,7 +46,9 @@ const styles = {
     mt: 5,
     overflow: "hidden",
     transition: "all .3s ease-in-out",
-    px: { xs: 5, sm: 5, md: 0 },
+    px: { xs: 2, sm: 5, md: 0 },
+    borderRadius: 2,
+    boxShadow: "0 4px 10px 4px rgba(190, 190, 190, 0.4)",
   },
 };
 
@@ -179,7 +181,7 @@ export default () => {
   return (
     <>
       <Content maxWidth="lg">
-        <Box sx={{ px: { xs: 4, md: 5 }, mb: 5 }}>
+        <Box sx={{ px: { xs: 0, md: 5 }, mb: 5 }}>
           <Grid
             container
             spacing={2}
@@ -310,7 +312,7 @@ export default () => {
                     >
                       <LocationOnIcon />
                       <Typography sx={{ fontWeight: 600 }}>地址</Typography>
-                      <Box sx={{ml: 1, width: "fit-content"}}>
+                      <Box sx={{ ml: 1, width: "fit-content" }}>
                         <Copy textToCopy="香港九龍觀塘道123號創業中心大廈15樓1501-1502室" />
                       </Box>
                     </Box>

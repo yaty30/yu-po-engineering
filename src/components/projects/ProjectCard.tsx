@@ -133,6 +133,7 @@ export default ({ date, subject, location, image, key = 0 }: Props) => {
             transition: "all 0.2s ease-in-out",
             "&:hover": {
               transform: "scale(1.035)",
+              borderColor: "rgba(255, 255,255, 0.2)",
             },
           }}
         >
