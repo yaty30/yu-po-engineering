@@ -5,8 +5,6 @@ import {
   TextField,
   Container,
   IconButton,
-  useMediaQuery,
-  useTheme,
   Typography,
   Stack,
   ListItem,
@@ -28,6 +26,7 @@ import CompanyLogo from "~/assets/logos/companylogo.png";
 import { RootState } from "~/stores/store";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useBreakpoint } from "../hooks/useBreakpoint";
 
 const styles = {
   container: {
@@ -36,7 +35,7 @@ const styles = {
     bgcolor: "rgba(44, 54, 74, 0.95)",
     pt: 6,
     pb: 2,
-    mt: 4
+    mt: 4,
   },
   content: {
     display: "flex",
@@ -146,8 +145,8 @@ const ListItemHead = ({ icon, title }: ListItemHeadProps) => {
 const selectMenuOptions = (state: RootState) => state.generalStores.menuOptions;
 
 export default () => {
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isMobile, isSmallScreen } = useBreakpoint();
+
   const navigate = useNavigate();
 
   const menuOptions = useSelector(selectMenuOptions);
@@ -200,31 +199,35 @@ export default () => {
               }}
             />
           </Box>
-          <Box
-            sx={{
-              ...styles.column,
-              justifyContent: isSmallScreen ? "center" : "flex-end",
-              color: "#fff",
-            }}
-          >
-            <Typography sx={{ mr: 3, fontWeight: 500 }}>關注我們: </Typography>
-            <Stack direction="row" spacing={3}>
-              {contacts.map((item) => (
-                <IconButton
-                  key={item.name}
-                  sx={{
-                    color: "#fff",
-                    transition: "all .3s ease-in-out",
-                    "&:hover": {
-                      color: "#fb8c00",
-                    },
-                  }}
-                >
-                  {item.icon}
-                </IconButton>
-              ))}
-            </Stack>
-          </Box>
+          {!isMobile && (
+            <Box
+              sx={{
+                ...styles.column,
+                justifyContent: isSmallScreen ? "center" : "flex-end",
+                color: "#fff",
+              }}
+            >
+              <Typography sx={{ mr: 3, fontWeight: 500 }}>
+                關注我們:{" "}
+              </Typography>
+              <Stack direction="row" spacing={3}>
+                {contacts.map((item) => (
+                  <IconButton
+                    key={item.name}
+                    sx={{
+                      color: "#fff",
+                      transition: "all .3s ease-in-out",
+                      "&:hover": {
+                        color: "#fb8c00",
+                      },
+                    }}
+                  >
+                    {item.icon}
+                  </IconButton>
+                ))}
+              </Stack>
+            </Box>
+          )}
         </Box>
 
         <Grid
@@ -301,6 +304,38 @@ export default () => {
               ))}
             </List>
           </Grid>
+          {isMobile && (
+            <Grid size={{ xs: 6, sm: 6, md: 2 }}>
+              <List>
+                <ListItemHead title="關注我們" icon={<InfoRoundedIcon />} />
+
+                {contacts.map((item) => (
+                  <ListItemButton
+                    key={item.name}
+                    sx={{
+                      color: "#fff",
+                      transition: "all .3s ease-in-out",
+                      "&:hover": {
+                        color: "#fb8c00",
+                      },
+                    }}
+                  >
+                    <Stack
+                      direction="row"
+                      sx={{
+                        display: "flex",
+                        columnGap: 1,
+                        textTransform: "capitalize",
+                      }}
+                    >
+                      {item.icon}
+                      {item.name}
+                    </Stack>
+                  </ListItemButton>
+                ))}
+              </List>
+            </Grid>
+          )}
         </Grid>
 
         <Box sx={styles.content}>
