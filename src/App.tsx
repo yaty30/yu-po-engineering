@@ -23,14 +23,18 @@ function App() {
             // path="/"
             element={<Home />}
           />
-          <Route path="/products" element={<Products />} />
+
+          <Route path="/products">
+            <Route index element={<Products />} />
+            <Route path=":id/:name" element={<ProductIntro />} />
+          </Route>
+
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route
             path="*"
             element={<div> Not Found or You do not have permission.</div>}
           />
-          <Route path="/products/:id/:name" element={<ProductIntro />} />
         </Route>
       </Routes>
     </BrowserRouter>
