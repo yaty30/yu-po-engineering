@@ -2,6 +2,7 @@ import React from "react";
 import {
   Box,
   Breadcrumbs,
+  Button,
   Container,
   Divider,
   Link,
@@ -10,6 +11,7 @@ import {
 } from "@mui/material";
 import type { SxProps, Theme } from "@mui/material";
 import { useBreakpoint } from "../hooks/useBreakpoint";
+import { useNavigate } from "react-router-dom";
 
 interface DividerProps {
   enabled?: boolean;
@@ -33,6 +35,14 @@ interface ContentProps {
   breadcrumbs?: Array<BreadcrumbsProps>;
 }
 
+const sx = {
+  clickable: {
+    "&:hover": {
+      color: "var(--primary-hover)",
+    },
+  },
+};
+
 export default function Content({
   children,
   maxWidth = "xl",
@@ -43,6 +53,8 @@ export default function Content({
 }: ContentProps) {
   const theme = useTheme();
   const { isMobile, isLarge } = useBreakpoint();
+
+  const navigate = useNavigate();
 
   // Determine container styles based on direction prop
   const containerSx: SxProps<Theme> = {
@@ -95,26 +107,31 @@ export default function Content({
       {breadcrumbs && (
         <Box sx={{ mb: 3, ml: 3, userSelect: "none" }}>
           <Breadcrumbs aria-label="breadcrumb">
-            <Link underline="hover" color="inherit" href="/">
+            <Button
+              onClick={() => navigate("/")}
+              color="inherit"
+              sx={sx.clickable}
+            >
               首頁
-            </Link>
+            </Button>
             {breadcrumbs.map((breadcrum, index) =>
               index === breadcrumbs.length - 1 ? (
-                <Typography
-                  sx={{ color: "text.primary" }}
-                  key={breadcrum.label}
-                >
-                  {breadcrum.label}
-                </Typography>
+                <Button key={breadcrum.label} disabled>
+                  <span
+                    style={{ color: "var(--primary-hover)", fontWeight: 600 }}
+                  >
+                    {breadcrum.label}
+                  </span>
+                </Button>
               ) : (
-                <Link
-                  underline="hover"
+                <Button
                   color="inherit"
-                  href={breadcrum.link}
                   key={breadcrum.label}
+                  onClick={() => navigate(`/${breadcrum.link}`)}
+                  sx={sx.clickable}
                 >
                   {breadcrum.label}
-                </Link>
+                </Button>
               )
             )}
           </Breadcrumbs>

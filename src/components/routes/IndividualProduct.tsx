@@ -10,7 +10,7 @@ const ProductIntro = () => {
   const { id, name } = useParams();
 
   const breadcrumbs = [
-    { label: "所有產品", link: "/products" },
+    { label: "所有產品", link: "products" },
     { label: name ?? "", link: "" },
   ];
 
