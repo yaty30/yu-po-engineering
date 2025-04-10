@@ -1,4 +1,9 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  // BrowserRouter,
+  Routes,
+  Route,
+  HashRouter,
+} from "react-router-dom";
 import "./App.css";
 
 import ContactUs from "~/components/routes/ContactUs";
@@ -12,10 +17,11 @@ function App() {
   // const basename = import.meta.env.BASE_URL;
 
   return (
-    <BrowserRouter
-      basename={"/yu-po-engineering"}
-      // basename={""}
-    >
+    // <BrowserRouter
+    //   basename={"/yu-po-engineering"}
+    //   basename={""}
+    // >
+    <HashRouter>
       <Routes>
         <Route element={<MainLayout />}>
           <Route
@@ -37,7 +43,8 @@ function App() {
           />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
+    // </BrowserRouter>
   );
 }
 
