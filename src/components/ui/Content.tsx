@@ -50,7 +50,7 @@ export default function Content({
     width: "100%",
     maxWidth: maxWidth ? theme.breakpoints.values[maxWidth] : "100%",
     margin: "0 auto", // Center the container
-    py: isMobile ? 2 : paddingY,
+    py: isMobile ? 2 : paddingY, // Center the container
   };
 
   if (isLarge && direction === "row") {
