@@ -3,19 +3,21 @@ import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import { Box, Chip, IconButton } from "@mui/material";
+import { Box, Chip, IconButton, useMediaQuery, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ProductProps } from "~/stores/productStores";
 
 const getContent = (content: string): string => {
   return content && content.length > 50
-    ? `${content.slice(0, 50)}...`
+    ? `${content.slice(0, 20)}...`
     : content || "";
 };
 
 // Using memo to prevent unnecessary re-renders
 const MiniProductCard = memo(function MiniProductCard(props: ProductProps) {
   const navigate = useNavigate();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [slideIn, setSlideIn] = useState<boolean>(false);
 
   // Using useCallback to memoize these functions
@@ -128,7 +130,7 @@ const MiniProductCard = memo(function MiniProductCard(props: ProductProps) {
         >
           <Typography
             gutterBottom
-            variant="h5"
+            variant={isMobile ? "h6" : "h5"}
             component="div"
             sx={{ color: "white", fontWeight: 600 }}
           >

@@ -12,7 +12,10 @@ function App() {
   // const basename = import.meta.env.BASE_URL;
 
   return (
-    <BrowserRouter basename={"/yu-po-engineering"}>
+    <BrowserRouter
+      basename={"/yu-po-engineering"}
+      // basename={""}
+    >
       <Routes>
         <Route element={<MainLayout />}>
           <Route

@@ -12,6 +12,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
+    // base: "",
     base: "/yu-po-engineering/",
     resolve: {
       alias: {
