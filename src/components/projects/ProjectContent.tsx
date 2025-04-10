@@ -42,7 +42,7 @@ export default () => {
   };
 
   return (
-    <Container sx={{ display: "flex", minHeight: "100%" }} maxWidth="xl">
+    <Box sx={{ display: "flex", minHeight: "100%" }}>
       {/* Mobile filter button */}
       {isMobile && (
         <Box
@@ -140,6 +140,6 @@ export default () => {
           </Box>
         </Container>
       </Box>
-    </Container>
+    </Box>
   );
 };

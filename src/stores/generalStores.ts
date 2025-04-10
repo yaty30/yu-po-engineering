@@ -15,7 +15,7 @@ const initialState: InitialState = {
   drawerOpen: false,
   navbarSolid: false,
   menuOptions: [
-    { label: "公司簡介", link: "/" },
+    { label: "首頁", link: "/" },
     { label: "所有產品", link: "/products" },
     { label: "案例分享", link: "/projects" },
     { label: "聯絡我們", link: "/contact-us" },

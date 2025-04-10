@@ -11,9 +11,9 @@ import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
-import InfoIcon from "@mui/icons-material/Info";
-import CategoryIcon from "@mui/icons-material/Category";
-import ContactsIcon from "@mui/icons-material/Contacts";
+import HeadsetMicOutlinedIcon from "@mui/icons-material/HeadsetMicOutlined";
+import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
+import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlined";
 import { IconButton, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import type { RootState } from "~/stores/store";
@@ -26,12 +26,12 @@ const getIconForPath = (path: string) => {
   switch (path) {
     case "/":
       return <HomeIcon />;
-    case "/about":
-      return <InfoIcon />;
     case "/products":
-      return <CategoryIcon />;
-    case "/contact":
-      return <ContactsIcon />;
+      return <DashboardOutlinedIcon />;
+    case "/projects":
+      return <BusinessCenterOutlinedIcon />;
+    case "/contact-us":
+      return <HeadsetMicOutlinedIcon />;
     default:
       return <MailIcon />;
   }
