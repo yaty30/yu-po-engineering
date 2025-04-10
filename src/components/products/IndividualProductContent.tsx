@@ -64,15 +64,17 @@ export default function IndividualProductContent({ id }: { id: string }) {
     >
       {/* Product Header Section */}
       <Grid container spacing={2} sx={{ p: 2 }}>
-        <Grid size={{ xs: 12, sm: 12, md: 5 }}>
+        <Grid
+          size={{ xs: 12, sm: 12, md: 5 }}
+          sx={{ display: "flex", justifyContent: "center" }}
+        >
           <CardMedia
-            sx={{
-              height: 400,
-              borderRadius: 2,
-              boxShadow: "0 0 40px 10px rgba(240, 240, 240, 0.5)",
-            }}
+            component="img"
             image={currentProduct?.image}
             title={currentProduct?.title}
+            sx={{
+              maxWidth: "70%",
+            }}
           />
         </Grid>
         <Grid size={{ xs: 12, sm: 12, md: 7 }}>
