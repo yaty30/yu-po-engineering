@@ -66,7 +66,7 @@ const Snackbar: React.FC<SnackbarProps> = ({
   return (
     <StyledSnackbar
       open={open}
-      autoHideDuration={3000}
+      autoHideDuration={6000}
       onClose={onClose}
       message={<SnackbarMessage icon={icon} title={title} />}
       anchorOrigin={{ vertical: "bottom", horizontal: "left" }}

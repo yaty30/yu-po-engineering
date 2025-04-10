@@ -2,6 +2,7 @@ import React from "react";
 import {
   Box,
   Breadcrumbs,
+  Container,
   Divider,
   Link,
   Typography,
@@ -34,7 +35,7 @@ interface ContentProps {
 
 export default function Content({
   children,
-  maxWidth,
+  maxWidth = "xl",
   paddingY = 1,
   divider,
   direction = "column",
@@ -60,7 +61,7 @@ export default function Content({
   }
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Container maxWidth={maxWidth}>
       {divider?.enabled && (
         <Box sx={{ mt: 8, mb: 6 }}>
           {" "}
@@ -92,37 +93,35 @@ export default function Content({
         </Box>
       )}
 
-      <Box sx={containerSx}>
-        {breadcrumbs && (
-          <Box sx={{ mb: 3, ml: 2, userSelect: "none" }}>
-            <Breadcrumbs aria-label="breadcrumb">
-              <Link underline="hover" color="inherit" href="/">
-                首頁
-              </Link>
-              {breadcrumbs.map((breadcrum, index) =>
-                index === breadcrumbs.length - 1 ? (
-                  <Typography
-                    sx={{ color: "text.primary" }}
-                    key={breadcrum.label}
-                  >
-                    {breadcrum.label}
-                  </Typography>
-                ) : (
-                  <Link
-                    underline="hover"
-                    color="inherit"
-                    href={breadcrum.link}
-                    key={breadcrum.label}
-                  >
-                    {breadcrum.label}
-                  </Link>
-                )
-              )}
-            </Breadcrumbs>
-          </Box>
-        )}
-        {children}
-      </Box>
-    </Box>
+      {breadcrumbs && (
+        <Box sx={{ mb: 3, ml: 3, userSelect: "none" }}>
+          <Breadcrumbs aria-label="breadcrumb">
+            <Link underline="hover" color="inherit" href="/">
+              首頁
+            </Link>
+            {breadcrumbs.map((breadcrum, index) =>
+              index === breadcrumbs.length - 1 ? (
+                <Typography
+                  sx={{ color: "text.primary" }}
+                  key={breadcrum.label}
+                >
+                  {breadcrum.label}
+                </Typography>
+              ) : (
+                <Link
+                  underline="hover"
+                  color="inherit"
+                  href={breadcrum.link}
+                  key={breadcrum.label}
+                >
+                  {breadcrum.label}
+                </Link>
+              )
+            )}
+          </Breadcrumbs>
+        </Box>
+      )}
+      {children}
+    </Container>
   );
 }

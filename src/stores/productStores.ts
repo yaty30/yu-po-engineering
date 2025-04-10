@@ -37,6 +37,7 @@ interface FilterOptions {
 
 interface InitialState {
   products: Array<ProductProps>;
+  randomProducts: Array<ProductProps>;
   filteredProducts: Array<ProductProps>;
   currentProduct: ProductProps | null;
   isLoading: boolean;
@@ -246,7 +247,8 @@ const initialState: InitialState = {
       id: "equipment-cnc",
       title: "高精度CNC加工中心",
       subheading: "工業4.0智能製造設備",
-      image: "/images/cnc-machine.jpg",
+      image:
+        "https://i.pinimg.com/736x/1e/90/e7/1e90e75594bd50f18edc685bdbc95bea.jpg",
       content:
         "五軸聯動高精度CNC加工中心，具備智能監控和自動調整功能。適用於航空、精密模具和醫療器械等高精度零件加工。",
       link: "/products/2005",
@@ -292,85 +294,140 @@ const initialState: InitialState = {
       },
     },
     {
-      id: "software-erp",
-      title: "企業資源規劃系統",
-      subheading: "一體化管理解決方案",
-      image: "/images/erp-system.jpg",
+      id: "industrial-robot-arm",
+      title: "工業機器人臂",
+      subheading: "高效率自動化操作系統",
+      image:
+        "https://i.pinimg.com/736x/79/d2/5e/79d25e6c9727f635bda6f16f617a834b.jpg",
       content:
-        "專為製造業設計的ERP系統，整合生產、庫存、採購、銷售和財務模組，提供全面的企業管理解決方案。支持雲端部署和移動訪問。",
+        "六軸工業機器人臂，具備精確定位和複雜軌跡規劃能力。適用於各類生產線的自動化操作，包括焊接、噴塗、搬運和組裝等工序。",
       link: "/products/2006",
-      category: "software",
+      category: "equipment",
       details: {
+        dimension: {
+          unit: "cm",
+          w: 180,
+          h: 210,
+          l: 220,
+          d: 0,
+        },
         materials: [
           {
-            type: "部署選項",
+            type: "機身結構",
             options: [
-              { label: "本地部署", img: "/images/on-premise.jpg" },
-              { label: "雲端部署", img: "/images/cloud-deployment.jpg" },
-              { label: "混合部署", img: "/images/hybrid-deployment.jpg" },
+              { label: "高強度鋁合金", img: "/images/aluminum-alloy.jpg" },
+              { label: "碳纖維複合材料", img: "/images/carbon-fiber.jpg" },
             ],
           },
           {
-            type: "模組選項",
+            type: "控制系統",
             options: [
-              { label: "基礎版", img: "/images/basic-version.jpg" },
-              { label: "標準版", img: "/images/standard-version.jpg" },
-              { label: "專業版", img: "/images/professional-version.jpg" },
-              { label: "企業版", img: "/images/enterprise-version.jpg" },
+              { label: "ABB控制系統", img: "/images/abb-control.jpg" },
+              {
+                label: "發那科控制系統",
+                img: "/images/fanuc-robot-control.jpg",
+              },
+              { label: "庫卡控制系統", img: "/images/kuka-control.jpg" },
             ],
           },
           {
-            type: "支援服務",
+            type: "末端執行器",
             options: [
-              { label: "標準技術支援", img: "/images/standard-support.jpg" },
-              { label: "高級技術支援", img: "/images/premium-support.jpg" },
-              { label: "全天候技術支援", img: "/images/24-7-support.jpg" },
+              { label: "通用夾爪", img: "/images/universal-gripper.jpg" },
+              { label: "真空吸盤", img: "/images/vacuum-gripper.jpg" },
+              { label: "焊接頭", img: "/images/welding-head.jpg" },
             ],
           },
         ],
       },
     },
     {
-      id: "packaging-biodegradable",
-      title: "生物可降解包裝系統",
-      subheading: "環保包裝新選擇",
-      image: "/images/biodegradable-packaging.jpg",
+      id: "laser-cutting-machine",
+      title: "高功率激光切割機",
+      subheading: "精密金屬加工設備",
+      image:
+        "https://i.pinimg.com/736x/29/bd/ac/29bdac153ce1070b5efcd50b91a78074.jpg",
       content:
-        "使用天然植物纖維和生物可降解材料製造的包裝解決方案，可在180天內自然降解。符合歐盟EN13432和美國ASTM D6400標準。",
+        "10千瓦光纖激光切割機，具備自動上下料系統和智能排版功能。適用於各類金屬板材的高速、高精度切割加工。",
       link: "/products/2007",
-      category: "packaging",
+      category: "equipment",
       details: {
         dimension: {
           unit: "cm",
-          w: 30,
-          h: 20,
-          l: 40,
-          d: 0.3,
+          w: 320,
+          h: 200,
+          l: 650,
+          d: 0,
         },
         materials: [
           {
-            type: "基礎材料",
+            type: "激光源類型",
             options: [
-              { label: "玉米澱粉基PLA", img: "/images/pla-material.jpg" },
-              { label: "甘蔗纖維", img: "/images/sugarcane-fiber.jpg" },
-              { label: "竹纖維複合材料", img: "/images/bamboo-composite.jpg" },
-              { label: "蘑菇菌絲體", img: "/images/mycelium-material.jpg" },
+              { label: "IPG光纖激光源", img: "/images/ipg-laser.jpg" },
+              { label: "銳科光纖激光源", img: "/images/raycus-laser.jpg" },
             ],
           },
           {
-            type: "印刷工藝",
+            type: "切割台面",
             options: [
-              { label: "大豆油墨印刷", img: "/images/soy-ink.jpg" },
-              { label: "水性環保油墨", img: "/images/water-based-ink.jpg" },
-              { label: "無印刷自然風格", img: "/images/natural-style.jpg" },
+              { label: "蜂窩式工作台", img: "/images/honeycomb-table.jpg" },
+              { label: "刀條式工作台", img: "/images/blade-table.jpg" },
             ],
           },
           {
-            type: "封裝方式",
+            type: "控制系統",
             options: [
-              { label: "自黏式封口", img: "/images/self-adhesive.jpg" },
-              { label: "可重複使用封口", img: "/images/reusable-closure.jpg" },
-              { label: "熱封式", img: "/images/heat-sealed.jpg" },
+              { label: "德國PA控制系統", img: "/images/pa-control.jpg" },
+              {
+                label: "日本三菱控制系統",
+                img: "/images/mitsubishi-control.jpg",
+              },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      id: "automatic-warehouse-system",
+      title: "自動化立體倉儲系統",
+      subheading: "智能物流解決方案",
+      image:
+        "https://i.pinimg.com/474x/61/0d/f6/610df6d617eed039c9022988709084af.jpg",
+      content:
+        "全自動立體倉儲系統，集成堆垛機、AGV小車和智能揀選系統。支持RFID識別和雲端倉儲管理，大幅提升存取效率和庫存管理水平。",
+      link: "/products/2008",
+      category: "equipment",
+      details: {
+        dimension: {
+          unit: "m",
+          w: 30,
+          h: 15,
+          l: 60,
+          d: 0,
+        },
+        materials: [
+          {
+            type: "貨架類型",
+            options: [
+              { label: "高位重型貨架", img: "/images/heavy-duty-rack.jpg" },
+              { label: "穿梭車貨架", img: "/images/shuttle-rack.jpg" },
+              { label: "自動化料箱貨架", img: "/images/bin-rack.jpg" },
+            ],
+          },
+          {
+            type: "輸送設備",
+            options: [
+              { label: "滾筒輸送線", img: "/images/roller-conveyor.jpg" },
+              { label: "AGV無人搬運車", img: "/images/agv-system.jpg" },
+              { label: "堆垛機", img: "/images/stacker-crane.jpg" },
+            ],
+          },
+          {
+            type: "識別系統",
+            options: [
+              { label: "RFID識別系統", img: "/images/rfid-system.jpg" },
+              { label: "條碼識別系統", img: "/images/barcode-system.jpg" },
+              { label: "視覺識別系統", img: "/images/vision-system.jpg" },
             ],
           },
         ],
@@ -378,6 +435,7 @@ const initialState: InitialState = {
     },
   ],
   filteredProducts: [],
+  randomProducts: [],
   currentProduct: null,
   isLoading: false,
   error: null,
@@ -424,6 +482,37 @@ const productSlice = createSlice({
       state.products.push(action.payload);
       applyFilters(state);
     },
+    randomProductList: (state) => {
+      // Make a copy to avoid modifying the original array
+      const products = state.products;
+      const count = 6;
+      const productsCopy = [...products];
+      const result = [];
+
+      // Handle edge cases
+      if (!products || products.length === 0) {
+        state.randomProducts = [];
+      }
+
+      // If we're asking for more items than available, return all shuffled
+      if (count >= productsCopy.length) {
+        state.randomProducts = productsCopy.sort(() => Math.random() - 0.5);
+      }
+
+      // Fisher-Yates shuffle algorithm (more efficient than multiple splice operations)
+      for (let i = 0; i < count; i++) {
+        const randomIndex =
+          i + Math.floor(Math.random() * (productsCopy.length - i));
+        // Swap elements
+        [productsCopy[i], productsCopy[randomIndex]] = [
+          productsCopy[randomIndex],
+          productsCopy[i],
+        ];
+        result.push(productsCopy[i]);
+      }
+
+      state.randomProducts = result.slice(0, count);
+    },
     updateProduct: (state, action: PayloadAction<ProductProps>) => {
       const index = state.products.findIndex(
         (product) => product.id === action.payload.id
@@ -463,6 +552,7 @@ export const {
   clearCurrentProduct,
   setLoading,
   setError,
+  randomProductList,
   filterByCategory,
   setSearchTerm,
   clearFilters,

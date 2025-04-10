@@ -8,12 +8,12 @@ const breadcrumbs = [{ label: "案例分享", link: "" }];
 
 const Projects = () => {
   return (
-    <Content>
+    <>
       <Banner imageSrc={BG} content={<ProjectBanner />} size="dense" />
       <Content maxWidth="xl" breadcrumbs={breadcrumbs}>
         <ProjectContent />
       </Content>
-    </Content>
+    </>
   );
 };
 

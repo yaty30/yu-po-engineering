@@ -57,6 +57,11 @@ const ProductsPage = () => {
     }
   }, [dispatch, products, filteredProducts.length]);
 
+  useEffect(() => {
+    setValue(0);
+    dispatch(clearFilters());
+  }, []);
+
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
 
@@ -143,97 +148,134 @@ const ProductsPage = () => {
   );
 
   return (
-    <Content>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: isMobile ? "column" : "row",
+        width: "100%",
+        minHeight: "100vh", // Ensure container takes up at least full viewport height
+      }}
+    >
+      {/* Sticky Tabs for desktop */}
       <Box
+        component="aside"
         sx={{
           display: "flex",
-          flexDirection: isMobile ? "column" : "row",
-          width: "100%",
-          minHeight: "100vh", // Ensure container takes up at least full viewport height
+          position: isMobile ? "relative" : "sticky",
+          top: isMobile ? "auto" : 80,
+          alignSelf: "flex-start",
+          zIndex: 1,
+          ...(isMobile
+            ? {
+                // These styles position the element relative to the viewport
+                // regardless of the parent container's padding
+                left: "50%",
+                right: "50%",
+                marginLeft: "-50vw",
+                marginRight: "-50vw",
+                width: "100vw",
+                overflowX: "auto",
+                scrollbarWidth: "none",
+                "&::-webkit-scrollbar": {
+                  display: "none",
+                },
+              }
+            : {
+                height: "fit-content",
+                width: "auto",
+                px: 1,
+              }),
         }}
       >
-        {/* Sticky Tabs for desktop */}
-        <Box
-          component="aside"
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="product category tabs"
+          variant="scrollable"
+          scrollButtons={isMobile ? false : "auto"} // Disable scroll buttons on mobile
+          orientation={isMobile ? "horizontal" : "vertical"}
           sx={{
-            display: "flex",
-            width: isMobile ? "100%" : "auto",
-            position: isMobile ? "relative" : "sticky",
-            top: isMobile ? "auto" : 80, // Same top spacing as ProjectsFilter
-            alignSelf: "flex-start",
-            zIndex: 1,
-            ...(isMobile ? {} : { height: "fit-content" }), // Only set height on non-mobile
+            minWidth: isMobile ? "auto" : 200,
+            width: isMobile ? "max-content" : "100%", // Make tab container fit content width on mobile
+            borderRight: isMobile ? 0 : 1,
+            borderBottom: isMobile ? 1 : 0,
+            borderColor: "divider",
+            bgcolor: "background.paper",
+            "& .MuiTabs-indicator": {
+              bgcolor: "var(--primary)",
+            },
+            "& .MuiTabs-flexContainer": {
+              ...(isMobile && {
+                width: "max-content",
+              }),
+            },
+            "& .Mui-selected": {
+              color: "var(--primary) !important",
+              fontWeight: 600,
+            },
+            "& .MuiTabs-scroller": {
+              ...(isMobile && {
+                overflow: "auto !important",
+                scrollbarWidth: "none", // Firefox
+                "&::-webkit-scrollbar": {
+                  // Chrome/Safari/Edge
+                  display: "none",
+                },
+                msOverflowStyle: "none", // IE
+              }),
+            },
           }}
         >
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            aria-label="product category tabs"
-            orientation={isMobile ? "horizontal" : "vertical"}
-            sx={{
-              width: "100%",
-              minWidth: { md: 200 },
-              borderRight: isMobile ? 0 : 1,
-              borderBottom: isMobile ? 1 : 0,
-              borderColor: "divider",
-              bgcolor: "background.paper",
-              "& .MuiTabs-indicator": {
-                bgcolor: "var(--primary)",
-              },
-              "& .Mui-selected": {
-                color: "var(--primary) !important",
-                fontWeight: 600,
-              },
-            }}
-          >
-            <Tab label="所有產品" sx={styles(0).tabs.btn} />
-            <Tab label="門類產品" sx={styles(1).tabs.btn} />
-            <Tab label="結構產品" sx={styles(2).tabs.btn} />
-            <Tab label="隔音產品" sx={styles(3).tabs.btn} />
-            <Tab label="設備" sx={styles(4).tabs.btn} />
-            <Tab label="軟件" sx={styles(5).tabs.btn} />
-            <Tab label="包裝" sx={styles(6).tabs.btn} />
-          </Tabs>
-        </Box>
-
-        {/* Title level reference element */}
-        <Box
-          ref={titleLevelRef}
-          sx={{ position: "relative", height: 0, visibility: "hidden" }}
-        />
-
-        {/* Content panels */}
-        <Box ref={contentRef} sx={{ flexGrow: 1, overflow: "auto" }}>
-          <TabPanel tabIndex={0} title="所有產品">
-            <ProductList products={filteredProducts} />
-          </TabPanel>
-
-          <TabPanel tabIndex={1} title="門類產品">
-            <ProductList products={filteredProducts} />
-          </TabPanel>
-
-          <TabPanel tabIndex={2} title="結構產品">
-            <ProductList products={filteredProducts} />
-          </TabPanel>
-
-          <TabPanel tabIndex={3} title="隔音產品">
-            <ProductList products={filteredProducts} />
-          </TabPanel>
-
-          <TabPanel tabIndex={4} title="設備">
-            <ProductList products={filteredProducts} />
-          </TabPanel>
-
-          <TabPanel tabIndex={5} title="軟件">
-            <ProductList products={filteredProducts} />
-          </TabPanel>
-
-          <TabPanel tabIndex={6} title="包裝">
-            <ProductList products={filteredProducts} />
-          </TabPanel>
-        </Box>
+          <Tab label="所有產品" sx={styles(0).tabs.btn} />
+          <Tab label="門類產品" sx={styles(1).tabs.btn} />
+          <Tab label="結構產品" sx={styles(2).tabs.btn} />
+          <Tab label="隔音產品" sx={styles(3).tabs.btn} />
+          <Tab label="設備" sx={styles(4).tabs.btn} />
+          <Tab label="軟件" sx={styles(5).tabs.btn} />
+          <Tab label="包裝" sx={styles(6).tabs.btn} />
+        </Tabs>
       </Box>
-    </Content>
+
+      {/* Title level reference element */}
+      <Box
+        ref={titleLevelRef}
+        sx={{ position: "relative", height: 0, visibility: "hidden" }}
+      />
+
+      {/* Content panels */}
+      <Box
+        ref={contentRef}
+        sx={{ flexGrow: 1, overflow: "auto", pt: isMobile ? 2 : 0 }}
+      >
+        <TabPanel tabIndex={0} title="所有產品">
+          <ProductList products={filteredProducts} />
+        </TabPanel>
+
+        <TabPanel tabIndex={1} title="門類產品">
+          <ProductList products={filteredProducts} />
+        </TabPanel>
+
+        <TabPanel tabIndex={2} title="結構產品">
+          <ProductList products={filteredProducts} />
+        </TabPanel>
+
+        <TabPanel tabIndex={3} title="隔音產品">
+          <ProductList products={filteredProducts} />
+        </TabPanel>
+
+        <TabPanel tabIndex={4} title="設備">
+          <ProductList products={filteredProducts} />
+        </TabPanel>
+
+        <TabPanel tabIndex={5} title="軟件">
+          <ProductList products={filteredProducts} />
+        </TabPanel>
+
+        <TabPanel tabIndex={6} title="包裝">
+          <ProductList products={filteredProducts} />
+        </TabPanel>
+      </Box>
+    </Box>
   );
 };
 

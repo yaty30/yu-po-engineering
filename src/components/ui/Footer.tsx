@@ -36,6 +36,7 @@ const styles = {
     bgcolor: "rgba(44, 54, 74, 0.95)",
     pt: 6,
     pb: 2,
+    mt: 4
   },
   content: {
     display: "flex",

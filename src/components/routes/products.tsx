@@ -8,12 +8,12 @@ const breadcrumbs = [{ label: "所有產品", link: "" }];
 
 const Products = () => {
   return (
-    <Content>
+    <>
       <Banner imageSrc={BG} content={<ProductBanner />} size="dense" />
       <Content maxWidth="lg" breadcrumbs={breadcrumbs}>
         <ProductContent />
       </Content>
-    </Content>
+    </>
   );
 };
 

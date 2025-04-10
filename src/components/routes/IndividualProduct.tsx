@@ -14,7 +14,7 @@ const ProductIntro = () => {
   ];
 
   return (
-    <Content>
+    <>
       <Banner
         imageSrc={BG}
         content={<IndividualProductBanner />}
@@ -22,10 +22,10 @@ const ProductIntro = () => {
         opacity={0.8}
         sx={{ filter: "grayscale(0.2) brightness(1.7) " }}
       />
-      <Content maxWidth="lg" breadcrumbs={breadcrumbs}>
+      <Content maxWidth="xl" breadcrumbs={breadcrumbs}>
         <IndividualProductContent id={id ?? ""} />
       </Content>
-    </Content>
+    </>
   );
 };
 

@@ -125,37 +125,50 @@ export default function IndividualProductContent({ id }: { id: string }) {
           </Divider>
 
           {/* Dimensions Table */}
-          <Typography variant="h6" sx={{ mt: 4, mb: 2, fontWeight: 500 }}>
-            尺寸規格
-          </Typography>
-          <TableContainer
-            component={Paper}
-            elevation={0}
-            sx={{ mb: 4, border: "1px solid rgba(224, 224, 224, 1)" }}
-          >
-            <Table>
-              <TableHead>
-                <TableRow sx={{ backgroundColor: "rgba(0, 0, 0, 0.03)" }}>
-                  <TableCell>單位</TableCell>
-                  <TableCell>寬度 (W)</TableCell>
-                  <TableCell>高度 (H)</TableCell>
-                  <TableCell>長度 (L)</TableCell>
-                  <TableCell>深度 (D)</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                <TableRow>
-                  <TableCell>
-                    {currentProduct?.details?.dimension?.unit}
-                  </TableCell>
-                  <TableCell>{currentProduct?.details?.dimension?.w}</TableCell>
-                  <TableCell>{currentProduct?.details?.dimension?.h}</TableCell>
-                  <TableCell>{currentProduct?.details?.dimension?.l}</TableCell>
-                  <TableCell>{currentProduct?.details?.dimension?.d}</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
+
+          {currentProduct?.details?.dimension && (
+            <>
+              <Typography variant="h6" sx={{ mt: 4, mb: 2, fontWeight: 500 }}>
+                尺寸規格
+              </Typography>
+              <TableContainer
+                component={Paper}
+                elevation={0}
+                sx={{ mb: 4, border: "1px solid rgba(224, 224, 224, 1)" }}
+              >
+                <Table>
+                  <TableHead>
+                    <TableRow sx={{ backgroundColor: "rgba(0, 0, 0, 0.03)" }}>
+                      <TableCell>單位</TableCell>
+                      <TableCell>寬度 (W)</TableCell>
+                      <TableCell>高度 (H)</TableCell>
+                      <TableCell>長度 (L)</TableCell>
+                      <TableCell>深度 (D)</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>
+                        {currentProduct.details.dimension?.unit}
+                      </TableCell>
+                      <TableCell>
+                        {currentProduct.details.dimension?.w}
+                      </TableCell>
+                      <TableCell>
+                        {currentProduct.details.dimension?.h}
+                      </TableCell>
+                      <TableCell>
+                        {currentProduct.details.dimension?.l}
+                      </TableCell>
+                      <TableCell>
+                        {currentProduct.details.dimension?.d}
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </>
+          )}
 
           {/* Materials Section */}
           {currentProduct.details.materials &&

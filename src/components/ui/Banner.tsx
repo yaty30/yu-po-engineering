@@ -43,7 +43,7 @@ const Banner = ({
         maxWidth: "100%",
         overflow: "hidden",
         userSelect: "none",
-        top: -80,
+        top: -20
       }}
     >
       <CardMedia

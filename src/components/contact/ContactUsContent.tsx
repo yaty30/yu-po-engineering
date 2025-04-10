@@ -178,7 +178,7 @@ export default () => {
 
   return (
     <>
-      <Content maxWidth="md">
+      <Content maxWidth="lg">
         <Box sx={{ px: { xs: 4, md: 5 }, mb: 5 }}>
           <Grid
             container
@@ -310,6 +310,9 @@ export default () => {
                     >
                       <LocationOnIcon />
                       <Typography sx={{ fontWeight: 600 }}>地址</Typography>
+                      <Box sx={{ml: 1, width: "fit-content"}}>
+                        <Copy textToCopy="香港九龍觀塘道123號創業中心大廈15樓1501-1502室" />
+                      </Box>
                     </Box>
                     <Box
                       sx={{
@@ -337,7 +340,6 @@ export default () => {
                           <span>1501-1502室</span>
                         </Stack>
                       </Button>
-                      <Copy textToCopy="香港九龍觀塘道123號創業中心大廈15樓1501-1502室" />
                     </Box>
                   </Box>
                 </Box>

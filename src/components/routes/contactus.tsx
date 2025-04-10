@@ -8,12 +8,12 @@ const breadcrumbs = [{ label: "聯絡我們", link: "" }];
 
 const ContactUs = () => {
   return (
-    <Content>
+    <>
       <Banner imageSrc={BG} content={<ContactUsBanner />} size="dense" />
-      <Content breadcrumbs={breadcrumbs} maxWidth="md">
+      <Content breadcrumbs={breadcrumbs} maxWidth="xl">
         <ContactUsContent />
       </Content>
-    </Content>
+    </>
   );
 };
 

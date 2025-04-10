@@ -6,10 +6,10 @@ import Content from "../ui/Content";
 
 const Home = () => {
   return (
-    <Content>
+    <>
       <Banner imageSrc={BannerBG} content={<HomeBanner />} />
       <HomeContent />
-    </Content>
+    </>
   );
 };
 
