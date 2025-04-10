@@ -9,10 +9,10 @@ import Home from "~/components/routes/Home";
 import ProductIntro from "./components/routes/IndividualProduct";
 
 function App() {
-  // const basename = import.meta.env.BASE_URL;
+  const basename = import.meta.env.BASE_URL;
 
   return (
-    <BrowserRouter basename={""}>
+    <BrowserRouter basename={basename}>
       <Routes>
         <Route element={<MainLayout />}>
           <Route

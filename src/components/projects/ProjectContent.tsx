@@ -9,7 +9,7 @@ import {
   IconButton,
 } from "@mui/material";
 import ProjectCard from "./ProjectCard";
-import ProjectsFilter, { type Project } from "./ProjectsFilter";
+import ProjectsFilter from "./ProjectsFilter";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { RootState } from "~/stores/store";
 import { useSelector } from "react-redux";

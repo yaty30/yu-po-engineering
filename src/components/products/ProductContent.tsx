@@ -8,7 +8,6 @@ import {
   Grid,
 } from "@mui/material";
 import React, { useState, useEffect, type ReactNode, useRef } from "react";
-import Content from "~/components/ui/Content";
 import { useBreakpoint } from "~/components/hooks/useBreakpoint";
 import ProductCard from "./ProductCard";
 import { RootState } from "~/stores/store";

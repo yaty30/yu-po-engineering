@@ -8,11 +8,11 @@ export default defineConfig(({ mode }) => {
   const base = env.APP_BASE_ROUTE
     ? `${env.APP_BASE_ROUTE}/`
     : env.APP_BASE_ROUTE;
-  console.log(base ? "" : "");
+  // console.log(base ? "" : "");
 
   return {
     plugins: [react()],
-    base: "",
+    base: base,
     resolve: {
       alias: {
         "~": path.resolve(__dirname, "./src"),

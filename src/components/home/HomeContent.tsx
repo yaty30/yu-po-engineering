@@ -1,4 +1,4 @@
-import { Box, Container } from "@mui/material";
+import { Container } from "@mui/material";
 import Content from "../../components/ui/Content";
 import ProfilePicture from "~/assets/worker.jpg";
 import Article from "../../components/ui/Article";

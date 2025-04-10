@@ -1,22 +1,11 @@
 import { memo, useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import { store } from "~/stores/store";
-import { Box, CardMedia, CircularProgress } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import NavBar from "~/components/ui/NavBar";
 import Footer from "~/components/ui/Footer";
 import ContactDial from "~/components/ui/ContactDial";
 import { Outlet, useLocation } from "react-router-dom";
-
-// ScrollToTop component that uses the useLocation hook to detect route changes
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
-};
 
 const Layout = () => {
   const [loading, setLoading] = useState(true);
