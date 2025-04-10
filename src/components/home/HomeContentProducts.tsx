@@ -7,6 +7,7 @@ import { RootState } from "~/stores/store";
 import MiniProductCard from "../ui/MiniProductCard";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
 import { useNavigate } from "react-router-dom";
+import { useBreakpoint } from "../hooks/useBreakpoint";
 
 const listState = (state: RootState) => state.productStores.randomProducts;
 
@@ -14,6 +15,8 @@ export default () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const randomList = useSelector(listState);
+  const { isMobile } = useBreakpoint();
+
   useEffect(() => {
     dispatch(randomProductList());
   }, []);
@@ -44,7 +47,7 @@ export default () => {
             flexDirection: "row",
             justifyContent: "flex-start",
             alignItems: "center",
-            width: "70vw",
+            width: isMobile ? "80vw" : "76vw",
             overflowY: "scroll",
             // height: 400,
             py: 3,
