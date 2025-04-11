@@ -30,6 +30,7 @@ export default function ContactDial() {
   return (
     <Box sx={{ height: 0, flexGrow: 1 }}>
       <SpeedDial
+        direction="left"
         ariaLabel="SpeedDial basic example"
         sx={{
           position: "fixed",

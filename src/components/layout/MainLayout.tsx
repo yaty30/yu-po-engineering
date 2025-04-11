@@ -6,11 +6,12 @@ import NavBar from "~/components/ui/NavBar";
 import Footer from "~/components/ui/Footer";
 import ContactDial from "~/components/ui/ContactDial";
 import { Outlet, useLocation } from "react-router-dom";
+import GoToTop from "../ui/GotoTop";
 
 // Define global styles interface
 interface GlobalStyles {
   body: React.CSSProperties;
-  '*': React.CSSProperties;
+  "*": React.CSSProperties;
 }
 
 // Add a global style fix to prevent horizontal overflow but allow vertical scrolling
@@ -18,15 +19,15 @@ const globalStyles: GlobalStyles = {
   body: {
     margin: 0,
     padding: 0,
-    overflowX: 'hidden',
-    overflowY: 'auto',
-    boxSizing: 'border-box',
-    width: '100%',
-    maxWidth: '100%'
+    overflowX: "hidden",
+    overflowY: "auto",
+    boxSizing: "border-box",
+    width: "100%",
+    maxWidth: "100%",
   },
-  '*': {
-    boxSizing: 'border-box'
-  }
+  "*": {
+    boxSizing: "border-box",
+  },
 };
 
 const Layout: React.FC = () => {
@@ -38,11 +39,11 @@ const Layout: React.FC = () => {
     Object.entries(globalStyles.body).forEach(([property, value]) => {
       document.body.style[property as any] = value as string;
     });
-    
+
     return () => {
       // Clean up styles when component unmounts
       Object.keys(globalStyles.body).forEach((property) => {
-        document.body.style[property as any] = '';
+        document.body.style[property as any] = "";
       });
     };
   }, []);
@@ -59,16 +60,16 @@ const Layout: React.FC = () => {
 
   return (
     <Provider store={store}>
-      <Box 
-        sx={{ 
-          position: "relative", 
-          minHeight: "100vh", 
-          width: "100%", 
+      <Box
+        sx={{
+          position: "relative",
+          minHeight: "100vh",
+          width: "100%",
           maxWidth: "100%",
-          overflowX: 'hidden',
-          overflowY: 'visible',
+          overflowX: "hidden",
+          overflowY: "visible",
           m: 0,
-          p: 0
+          p: 0,
         }}
       >
         {loading ? (
@@ -102,11 +103,11 @@ const Layout: React.FC = () => {
               sx={{
                 width: "100%",
                 maxWidth: "100%",
-                pt: { xs: '56px', sm: '64px' }, // Adjust based on NavBar height
-                pb: { xs: '56px', sm: '64px' }, // Adjust based on Footer height
+                pt: { xs: "56px", sm: "64px" }, // Adjust based on NavBar height
+                pb: { xs: "56px", sm: "64px" }, // Adjust based on Footer height
                 minHeight: "100vh",
                 overflowX: "hidden",
-                overflowY: "visible"
+                overflowY: "visible",
               }}
             >
               <Box
@@ -116,7 +117,7 @@ const Layout: React.FC = () => {
                   flexDirection: "column",
                   width: "100%",
                   maxWidth: "100%",
-                  position: 'relative',
+                  position: "relative",
                   bottom: 50,
                 }}
               >
@@ -128,13 +129,22 @@ const Layout: React.FC = () => {
               sx={{
                 position: "relative",
                 width: "100%",
-                maxWidth: "100%"
+                maxWidth: "100%",
               }}
             >
               <Footer />
             </Box>
-            
-            <ContactDial />
+
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
+              <GoToTop />
+              <ContactDial />
+            </Box>
           </>
         )}
       </Box>
