@@ -48,6 +48,7 @@ const styles = {
     px: { xs: 2, sm: 5, md: 0 },
     borderRadius: 2,
     boxShadow: "0 4px 10px 4px rgba(190, 190, 190, 0.4)",
+    border: "1.2px solid rgba(180, 180, 180, 0.7)",
   },
 };
 

@@ -5,7 +5,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "export BASE_URL=/ vite",
+    "dev": "export BASE_URL=/ && vite",
     "build": "export BASE_URL=/yu-po-engineering && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
