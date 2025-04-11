@@ -23,7 +23,7 @@ const Layout = () => {
 
   return (
     <Provider store={store}>
-      <Box sx={{ position: "relative", minHeight: "100vh" }}>
+      <Box sx={{ position: "relative", minHeight: "100vh", overflowX: 'none' }}>
         {loading ? (
           <Box
             sx={{
