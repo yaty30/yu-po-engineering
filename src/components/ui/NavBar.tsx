@@ -34,14 +34,14 @@ const NavBar = () => {
   // Optimize scroll handler with requestAnimationFrame
   useEffect(() => {
     // Check initial scroll position
-    if (window.scrollY > 0) setScrolled(true);
+    if (window.scrollY > 20) setScrolled(true);
 
     let ticking = false;
 
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          if (window.scrollY > 0) {
+          if (window.scrollY > 20) {
             setScrolled(true);
           } else {
             setScrolled(false);
