@@ -15,7 +15,7 @@ import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Copy from "../../components/ui/Copy";
 import { useBreakpoint } from "../hooks/useBreakpoint";
-import ContentMap from "./ContentMap";
+import ContentMap from "./ContactMap";
 
 const styles = {
   container: {
