@@ -141,7 +141,7 @@ const MenuDrawer = () => {
         color="inherit"
         sx={{ ml: 2 }}
       >
-        <MenuIcon sx={{ color: "#fff" }} />
+        <MenuIcon sx={{ color: "#fff", fontSize: 28 }} />
       </IconButton>
       <Drawer
         open={open}

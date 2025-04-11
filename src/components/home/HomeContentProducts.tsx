@@ -52,6 +52,11 @@ export default () => {
             // height: 400,
             py: 3,
             px: 3,
+            "&::-webkit-scrollbar": {
+              display: "none"
+            },
+            msOverflowStyle: "none",  // IE and Edge
+            scrollbarWidth: "none",   // Firefox
           }}
         >
           {[...randomList].map((product) => (

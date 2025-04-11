@@ -7,9 +7,45 @@ import Footer from "~/components/ui/Footer";
 import ContactDial from "~/components/ui/ContactDial";
 import { Outlet, useLocation } from "react-router-dom";
 
-const Layout = () => {
-  const [loading, setLoading] = useState(true);
+// Define global styles interface
+interface GlobalStyles {
+  body: React.CSSProperties;
+  '*': React.CSSProperties;
+}
+
+// Add a global style fix to prevent horizontal overflow but allow vertical scrolling
+const globalStyles: GlobalStyles = {
+  body: {
+    margin: 0,
+    padding: 0,
+    overflowX: 'hidden',
+    overflowY: 'auto',
+    boxSizing: 'border-box',
+    width: '100%',
+    maxWidth: '100%'
+  },
+  '*': {
+    boxSizing: 'border-box'
+  }
+};
+
+const Layout: React.FC = () => {
+  const [loading, setLoading] = useState<boolean>(true);
   const location = useLocation();
+
+  useEffect(() => {
+    // Apply global styles
+    Object.entries(globalStyles.body).forEach(([property, value]) => {
+      document.body.style[property as any] = value as string;
+    });
+    
+    return () => {
+      // Clean up styles when component unmounts
+      Object.keys(globalStyles.body).forEach((property) => {
+        document.body.style[property as any] = '';
+      });
+    };
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -23,7 +59,18 @@ const Layout = () => {
 
   return (
     <Provider store={store}>
-      <Box sx={{ position: "relative", minHeight: "100vh", overflowX: 'none' }}>
+      <Box 
+        sx={{ 
+          position: "relative", 
+          minHeight: "100vh", 
+          width: "100%", 
+          maxWidth: "100%",
+          overflowX: 'hidden',
+          overflowY: 'visible',
+          m: 0,
+          p: 0
+        }}
+      >
         {loading ? (
           <Box
             sx={{
@@ -34,20 +81,6 @@ const Layout = () => {
               height: "100vh",
             }}
           >
-            {/* <Box
-              sx={{
-                width: 200,
-                height: 200,
-              }}
-            >
-              <CardMedia
-                component="image"
-                sx={{
-                  maxWidth: "70%",
-                }}
-                image="https://images.unsplash.com/photo-1591955506264-3f5a6834570a?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              />
-            </Box> */}
             <CircularProgress sx={{ color: "var(--primary)" }} />
           </Box>
         ) : (
@@ -58,34 +91,49 @@ const Layout = () => {
                 top: 0,
                 left: 0,
                 width: "100%",
-                zIndex: 1100, // Higher than normal content
+                zIndex: 1100,
               }}
             >
               <NavBar />
             </Box>
 
-            {/* Main content area */}
+            {/* Main content area with fixed padding for fixed navbar */}
             <Box
               sx={{
                 width: "100%",
-                // Only add padding if banner is not present
-                pt: 0,
-                minHeight: "auto",
+                maxWidth: "100%",
+                pt: { xs: '56px', sm: '64px' }, // Adjust based on NavBar height
+                pb: { xs: '56px', sm: '64px' }, // Adjust based on Footer height
+                minHeight: "100vh",
+                overflowX: "hidden",
+                overflowY: "visible"
               }}
             >
               <Box
                 sx={{
-                  // py: 4,
                   display: "flex",
                   justifyContent: "flex-start",
                   flexDirection: "column",
+                  width: "100%",
+                  maxWidth: "100%",
+                  position: 'relative',
+                  bottom: 50,
                 }}
               >
                 <Outlet />
               </Box>
             </Box>
 
-            <Footer />
+            <Box
+              sx={{
+                position: "relative",
+                width: "100%",
+                maxWidth: "100%"
+              }}
+            >
+              <Footer />
+            </Box>
+            
             <ContactDial />
           </>
         )}

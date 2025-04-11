@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import BlurCircularIcon from "@mui/icons-material/BlurCircular";
 
 export default () => {
   const navigate = useNavigate();
@@ -20,10 +21,22 @@ export default () => {
           fontWeight: "bold",
           whiteSpace: "nowrap",
           cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          columnGap: 1,
+          textShadow: `
+            -1px -1px 0 rgba(0, 0, 0, 0.25),
+            1px -1px 0 rgba(0, 0, 0, 0.25),
+            -1px 1px 0 rgba(0, 0, 0, 0.25),
+            1px 1px 0 rgba(0, 0, 0, 0.25)
+          `,
         }}
         onClick={() => navigate("/")}
       >
-        譽寶專業公程有限公司
+        <Box>
+          <BlurCircularIcon />
+        </Box>
+        <Box>譽寶專業公程有限公司</Box>
       </Typography>
     </Box>
   );

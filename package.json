@@ -5,8 +5,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "export BASE_URL=/ && vite",
-    "build": "export BASE_URL=/yu-po-engineering && tsc -b && vite build",
+    "dev": "set BASE_URL=/ && vite",
+    "build": "set BASE_URL=/yu-po-engineering && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
