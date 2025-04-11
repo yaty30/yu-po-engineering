@@ -15,6 +15,7 @@ import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Copy from "../../components/ui/Copy";
 import { useBreakpoint } from "../hooks/useBreakpoint";
+import ContentMap from "./ContentMap";
 
 const styles = {
   container: {
@@ -38,17 +39,6 @@ const styles = {
     "&:hover": {
       backgroundColor: "var(--primary-hover)",
     },
-  },
-  mapContainer: {
-    width: "100%",
-    height: 400,
-    mt: 5,
-    overflow: "hidden",
-    transition: "all .3s ease-in-out",
-    px: { xs: 2, sm: 5, md: 0 },
-    borderRadius: 2,
-    boxShadow: "0 4px 10px 4px rgba(190, 190, 190, 0.4)",
-    border: "1.2px solid rgba(180, 180, 180, 0.7)",
   },
 };
 
@@ -458,23 +448,7 @@ export default () => {
           </Alert>
         </Snackbar>
       </Content>
-      {/* Map iframe - full width and at the bottom */}
-      <Box
-        sx={{ ...styles.mapContainer, height: expandMap ? 800 : 400 }}
-        ref={mapRef}
-      >
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.0496723782558!2d114.2162845!3d22.3139611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404013c60021801%3A0xbb8eb4282e33df25!2sNEO!5e0!3m2!1sen!2suk!4v1744094671273!5m2!1sen!2suk"
-          style={{
-            border: 0,
-            width: "100%",
-            height: "100%",
-          }}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          allowFullScreen
-        ></iframe>
-      </Box>
+      <ContentMap expandMap={expandMap} mapRef={mapRef} />
     </>
   );
 };
