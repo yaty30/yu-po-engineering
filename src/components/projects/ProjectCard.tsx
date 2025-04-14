@@ -25,7 +25,7 @@ export default ({ date, subject, location, image, key = 0 }: Props) => {
       key={key}
       sx={{
         width: "100%",
-        height: 500,
+        height: isMobile ? 360 : 500,
         position: "relative",
         overflow: "hidden",
         color: "white",
@@ -148,7 +148,7 @@ export default ({ date, subject, location, image, key = 0 }: Props) => {
               alignItems: "center", // Ensures vertical alignment
               justifyContent: "center",
               width: "100%",
-              height: 60,
+              height: isMobile ? 32 : 60,
             }}
           >
             <Typography

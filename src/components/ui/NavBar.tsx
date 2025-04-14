@@ -70,13 +70,13 @@ const NavBar = () => {
 
   return (
     <AppBar
-      position="sticky"
       sx={{
         bgcolor: scrolled ? "rgba(26, 33, 48, 0.85)" : "transparent",
         transition: "background-color .1s ease",
         backdropFilter: scrolled ? "blur(10px)" : "none",
         boxShadow: scrolled ? 1 : "none",
         zIndex: 10,
+        width: "100%", 
       }}
     >
       <Container maxWidth="xl">

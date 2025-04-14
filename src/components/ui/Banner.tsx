@@ -43,7 +43,8 @@ const Banner = ({
         maxWidth: "100%",
         overflow: "hidden",
         userSelect: "none",
-        top: -20,
+        // Add negative top margin to offset body padding
+        mt: { xs: "-56px", sm: "-64px" }
       }}
     >
       <CardMedia
@@ -65,16 +66,17 @@ const Banner = ({
           left: 0,
           right: 0,
           bottom: 0,
-          padding: { xs: 3, md: 8 }, // Proper spacing from edges
+          padding: { xs: 3, md: 8 },
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           background:
             "linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.2) 100%)",
-          paddingTop: "64px", // Add this to account for navbar height
+          // Add padding to ensure content doesn't hide behind navbar
+          pt: { xs: "76px", sm: "84px" }
         }}
       >
-        <Box sx={{ position: "relative", top: 20 }}>{content && content}</Box>
+        <Box sx={{ position: "relative" }}>{content && content}</Box>
       </Box>
     </Box>
   );

@@ -103,7 +103,6 @@ const Layout: React.FC = () => {
               sx={{
                 width: "100%",
                 maxWidth: "100%",
-                pt: { xs: "56px", sm: "64px" }, // Adjust based on NavBar height
                 pb: { xs: "56px", sm: "64px" }, // Adjust based on Footer height
                 minHeight: "100vh",
                 overflowX: "hidden",
@@ -118,7 +117,6 @@ const Layout: React.FC = () => {
                   width: "100%",
                   maxWidth: "100%",
                   position: "relative",
-                  bottom: 50,
                 }}
               >
                 <Outlet />

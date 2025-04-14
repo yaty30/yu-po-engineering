@@ -17,6 +17,7 @@ export function useBreakpoint() {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const isLarge = useMediaQuery(theme.breakpoints.up("md"));
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
-  return { breakpoints, currentBreakpoint, isMobile, isLarge, isSmallScreen };
+  return { breakpoints, currentBreakpoint, isMobile, isLarge, isSmallScreen,isTablet };
 }

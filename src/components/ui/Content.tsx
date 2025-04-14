@@ -71,7 +71,7 @@ export default function Content({
   }
 
   return (
-    <Container maxWidth={maxWidth}>
+    <Container maxWidth={maxWidth} sx={{ pt: 2 }}>
       {divider?.enabled && (
         <Box sx={{ mt: 8, mb: 6 }}>
           {" "}
@@ -104,18 +104,42 @@ export default function Content({
       )}
 
       {breadcrumbs && (
-        <Box sx={{ mb: 3, ml: 3, userSelect: "none" }}>
-          <Breadcrumbs aria-label="breadcrumb">
+        <Box sx={{ mb: 3, userSelect: "none" }}>
+          <Breadcrumbs
+            aria-label="breadcrumb"
+            sx={{
+              fontSize: 12,
+              "& .MuiBreadcrumbs-separator": {
+                fontSize: { xs: 14, sm: 16 },
+              },
+            }}
+          >
             <Button
               onClick={() => navigate("/")}
               color="inherit"
-              sx={sx.clickable}
+              sx={{
+                ...sx.clickable,
+                p: { xs: 0, sm: 1 },
+                m: { xs: 0, sm: 0.25 },
+                minWidth: { xs: "auto", sm: "64px" },
+                display: "flex",
+                alignItems: "center",
+                gap: 0.4,
+              }}
             >
-              首頁
+              <span>首頁</span>
             </Button>
             {breadcrumbs.map((breadcrum, index) =>
               index === breadcrumbs.length - 1 || breadcrum.link == "" ? (
-                <Button key={breadcrum.label} disabled>
+                <Button
+                  key={breadcrum.label}
+                  disabled
+                  sx={{
+                    p: { xs: 0, sm: 1 },
+                    m: { xs: 0, sm: 0.25 },
+                    minWidth: { xs: "auto", sm: "64px" },
+                  }}
+                >
                   <span
                     style={{ color: "var(--primary-hover)", fontWeight: 600 }}
                   >
@@ -127,7 +151,12 @@ export default function Content({
                   color="inherit"
                   key={breadcrum.label}
                   onClick={() => navigate(`/${breadcrum.link}`)}
-                  sx={sx.clickable}
+                  sx={{
+                    ...sx.clickable,
+                    p: { xs: 0, sm: 1 },
+                    m: { xs: 0, sm: 0.25 },
+                    minWidth: { xs: "auto", sm: "64px" },
+                  }}
                 >
                   {breadcrum.label}
                 </Button>

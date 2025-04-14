@@ -1,9 +1,10 @@
 import BG from "~/assets/projects_bg.jpg";
+
 import Banner from "../ui/Banner";
 import Content from "../ui/Content";
 import ProjectBanner from "../projects/ProjectBanner";
 import { useParams } from "react-router-dom";
-import ProjectARticleContent from "../projects/ProjectArticleContent";
+import ProjectArticleContent from "../projects/ProjectArticleContent";
 
 const Products = () => {
   const { subject, location } = useParams();
@@ -16,7 +17,7 @@ const Products = () => {
     <>
       <Banner imageSrc={BG} content={<ProjectBanner />} size="dense" />
       <Content maxWidth="lg" breadcrumbs={breadcrumbs}>
-        <ProjectARticleContent />
+        <ProjectArticleContent />
       </Content>
     </>
   );
