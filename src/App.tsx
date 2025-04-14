@@ -12,6 +12,7 @@ import Projects from "~/components/routes/Projects";
 import MainLayout from "~/components/layout/MainLayout";
 import Home from "~/components/routes/Home";
 import ProductIntro from "./components/routes/IndividualProduct";
+import ProjectArticle from "./components/routes/ProjectArticle";
 
 function App() {
   // const basename = import.meta.env.BASE_URL;
@@ -35,7 +36,14 @@ function App() {
             <Route path=":id/:name" element={<ProductIntro />} />
           </Route>
 
-          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects">
+            <Route index path="/projects" element={<Projects />} />
+            <Route
+              path=":id/:subject/:location/:date"
+              element={<ProjectArticle />}
+            />
+          </Route>
+
           <Route path="/contact-us" element={<ContactUs />} />
           <Route
             path="*"

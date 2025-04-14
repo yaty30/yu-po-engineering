@@ -1,0 +1,26 @@
+import BG from "~/assets/projects_bg.jpg";
+import ProductContent from "../products/ProductContent";
+import Banner from "../ui/Banner";
+import Content from "../ui/Content";
+import ProjectBanner from "../projects/ProjectBanner";
+import { useParams } from "react-router-dom";
+import ProjectARticleContent from "../projects/ProjectArticleContent";
+
+const Products = () => {
+  const { subject, location } = useParams();
+
+  const breadcrumbs = [
+    { label: "案例分享", link: "projects" },
+    { label: `${location} - ${subject}`, link: "" },
+  ];
+  return (
+    <>
+      <Banner imageSrc={BG} content={<ProjectBanner />} size="dense" />
+      <Content maxWidth="lg" breadcrumbs={breadcrumbs}>
+        <ProjectARticleContent />
+      </Content>
+    </>
+  );
+};
+
+export default Products;

@@ -6,6 +6,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 import { Button } from "@mui/material";
 import { useBreakpoint } from "../hooks/useBreakpoint";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   date: string;
@@ -17,6 +18,7 @@ interface Props {
 
 export default ({ date, subject, location, image, key = 0 }: Props) => {
   const { isMobile } = useBreakpoint();
+  const navigate = useNavigate();
 
   return (
     <Card
@@ -30,7 +32,7 @@ export default ({ date, subject, location, image, key = 0 }: Props) => {
         borderRadius: isMobile ? 2 : 4,
         border: "1px solid rgba(160, 160, 160, 0.2)",
         boxShadow: "0 0 60px 10px rgba(60,60,60,0.34)",
-        transition: "all 0.5s ease-in-out",
+        transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
         "&:hover": {
           transform: "scale(1.026)",
           boxShadow: "0 0 30px 10px rgba(60,60,60,0.34)",
@@ -121,6 +123,9 @@ export default ({ date, subject, location, image, key = 0 }: Props) => {
         <Button
           variant="text"
           fullWidth
+          onClick={() =>
+            navigate(`/projects/${key}/${subject}/${location}/${date}`)
+          }
           sx={{
             mt: 2,
             color: "#fff",

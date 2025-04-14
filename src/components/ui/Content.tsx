@@ -114,7 +114,7 @@ export default function Content({
               首頁
             </Button>
             {breadcrumbs.map((breadcrum, index) =>
-              index === breadcrumbs.length - 1 ? (
+              index === breadcrumbs.length - 1 || breadcrum.link == "" ? (
                 <Button key={breadcrum.label} disabled>
                   <span
                     style={{ color: "var(--primary-hover)", fontWeight: 600 }}
