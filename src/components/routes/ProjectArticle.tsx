@@ -1,5 +1,4 @@
 import BG from "~/assets/projects_bg.jpg";
-import ProductContent from "../products/ProductContent";
 import Banner from "../ui/Banner";
 import Content from "../ui/Content";
 import ProjectBanner from "../projects/ProjectBanner";

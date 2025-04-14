@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 export default () => {
   const { isMobile } = useBreakpoint();
-  const { id, subject, location, date } = useParams();
+  const { subject, location, date } = useParams();
 
   const textShadow = `
             -1px -1px 0 rgba(0, 0, 0, 0.25),
